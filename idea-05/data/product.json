@@ -1,0 +1,542 @@
+{
+  "brand": {
+    "name": "Standard Issue",
+    "currency": "$"
+  },
+  "product": {
+    "id": "no-4-straight",
+    "title": "No. 4 Straight Jean",
+    "subtitle": "14 oz rigid selvedge denim",
+    "price": 128,
+    "rating": 4.4,
+    "colors": [
+      {
+        "name": "Raw indigo",
+        "hex": "#1f2a44"
+      },
+      {
+        "name": "Stone wash",
+        "hex": "#7d8ba3"
+      },
+      {
+        "name": "Black",
+        "hex": "#1a1a1a"
+      }
+    ],
+    "images": [
+      {
+        "src": "assets/img/jean-1.jpg",
+        "alt": "Front pocket and copper rivets in raw indigo denim"
+      },
+      {
+        "src": "assets/img/jean-2.jpg",
+        "alt": "Full-length view of the straight leg on a model"
+      },
+      {
+        "src": "assets/img/jean-3.jpg",
+        "alt": "The straight leg worn with black trainers"
+      },
+      {
+        "src": "assets/img/jean-4.jpg",
+        "alt": "Close-up of the fly and twill weave"
+      },
+      {
+        "src": "assets/img/jean-5.jpg",
+        "alt": "Double-needle stitching on the coin pocket"
+      }
+    ],
+    "description": "A straight leg cut high at the waist from 14 oz rigid selvedge. Made to be worn in: it softens and moulds to you over a few months.",
+    "details": [
+      "100% cotton selvedge denim, 14 oz",
+      "Mid-high rise, straight leg, 81 cm inseam on size M",
+      "Copper rivets, zip fly",
+      "Made in Portugal"
+    ],
+    "sizes": [
+      {
+        "label": "XS",
+        "waistCm": 71,
+        "hipCm": 89,
+        "inseamCm": 79,
+        "available": true
+      },
+      {
+        "label": "S",
+        "waistCm": 76,
+        "hipCm": 94,
+        "inseamCm": 80,
+        "available": true
+      },
+      {
+        "label": "M",
+        "waistCm": 81,
+        "hipCm": 99,
+        "inseamCm": 81,
+        "available": true
+      },
+      {
+        "label": "L",
+        "waistCm": 86,
+        "hipCm": 104,
+        "inseamCm": 82,
+        "available": true
+      },
+      {
+        "label": "XL",
+        "waistCm": 91,
+        "hipCm": 109,
+        "inseamCm": 83,
+        "available": true
+      },
+      {
+        "label": "XXL",
+        "waistCm": 97,
+        "hipCm": 114,
+        "inseamCm": 84,
+        "available": false
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "id": "r1",
+      "author": "Ana C.",
+      "rating": 4,
+      "sizePurchased": "M",
+      "heightCm": 175,
+      "fit": "large",
+      "comment": "Runs large, I'd size down next time.",
+      "fitPhrase": "Runs large",
+      "date": "2026-03-12"
+    },
+    {
+      "id": "r2",
+      "author": "Ben C.",
+      "rating": 5,
+      "sizePurchased": "L",
+      "heightCm": 192,
+      "fit": "small",
+      "comment": "Runs small, I sized up from my usual L.",
+      "fitPhrase": "Runs small",
+      "date": "2026-03-08"
+    },
+    {
+      "id": "r3",
+      "author": "Chloe D.",
+      "rating": 3,
+      "sizePurchased": "S",
+      "heightCm": 160,
+      "fit": "true",
+      "comment": "Exactly my size. Room to move without looking baggy.",
+      "fitPhrase": "Exactly my size",
+      "date": "2026-08-21"
+    },
+    {
+      "id": "r4",
+      "author": "Dev B.",
+      "rating": 3,
+      "sizePurchased": "L",
+      "heightCm": 192,
+      "fit": "large",
+      "comment": "Generous fit. Size down if you like it close.",
+      "fitPhrase": "Generous fit",
+      "date": "2026-03-18"
+    },
+    {
+      "id": "r5",
+      "author": "Elif S.",
+      "rating": 5,
+      "sizePurchased": "S",
+      "heightCm": 163,
+      "fit": "small",
+      "comment": "Runs small, I sized up from my usual S.",
+      "fitPhrase": "Runs small",
+      "date": "2026-09-22"
+    },
+    {
+      "id": "r6",
+      "author": "Femi L.",
+      "rating": 5,
+      "sizePurchased": "L",
+      "heightCm": 166,
+      "fit": "small",
+      "comment": "A bit snug through the thigh. Size up if you're between sizes.",
+      "fitPhrase": "A bit snug",
+      "date": "2026-08-03"
+    },
+    {
+      "id": "r7",
+      "author": "Grace N.",
+      "rating": 4,
+      "sizePurchased": "S",
+      "heightCm": 191,
+      "fit": "small",
+      "comment": "Fits small. My usual S wouldn't button comfortably.",
+      "fitPhrase": "Fits small",
+      "date": "2026-06-19"
+    },
+    {
+      "id": "r8",
+      "author": "Hugo W.",
+      "rating": 4,
+      "sizePurchased": "M",
+      "heightCm": 184,
+      "fit": "small",
+      "comment": "A bit snug through the thigh. Size up if you're between sizes.",
+      "fitPhrase": "A bit snug",
+      "date": "2026-03-19"
+    },
+    {
+      "id": "r9",
+      "author": "Isla J.",
+      "rating": 4,
+      "sizePurchased": "XL",
+      "heightCm": 174,
+      "fit": "true",
+      "comment": "My usual XL fits perfectly.",
+      "fitPhrase": "fits perfectly",
+      "date": "2026-03-04"
+    },
+    {
+      "id": "r10",
+      "author": "Jon P.",
+      "rating": 5,
+      "sizePurchased": "L",
+      "heightCm": 187,
+      "fit": "small",
+      "comment": "A bit snug through the thigh. Size up if you're between sizes.",
+      "fitPhrase": "A bit snug",
+      "date": "2026-08-03"
+    },
+    {
+      "id": "r11",
+      "author": "Kemi K.",
+      "rating": 4,
+      "sizePurchased": "XL",
+      "heightCm": 190,
+      "fit": "small",
+      "comment": "Great denim, but it runs a size small.",
+      "fitPhrase": "runs a size small",
+      "date": "2026-07-16"
+    },
+    {
+      "id": "r12",
+      "author": "Liam I.",
+      "rating": 5,
+      "sizePurchased": "S",
+      "heightCm": 192,
+      "fit": "true",
+      "comment": "True to size. Same as every other S I own.",
+      "fitPhrase": "True to size",
+      "date": "2026-08-03"
+    },
+    {
+      "id": "r13",
+      "author": "Maya V.",
+      "rating": 4,
+      "sizePurchased": "M",
+      "heightCm": 158,
+      "fit": "true",
+      "comment": "Exactly my size. Room to move without looking baggy.",
+      "fitPhrase": "Exactly my size",
+      "date": "2026-05-23"
+    },
+    {
+      "id": "r14",
+      "author": "Noah L.",
+      "rating": 5,
+      "sizePurchased": "M",
+      "heightCm": 179,
+      "fit": "true",
+      "comment": "My usual M fits perfectly.",
+      "fitPhrase": "fits perfectly",
+      "date": "2026-03-16"
+    },
+    {
+      "id": "r15",
+      "author": "Omar M.",
+      "rating": 5,
+      "sizePurchased": "M",
+      "heightCm": 158,
+      "fit": "small",
+      "comment": "A bit snug through the thigh. Size up if you're between sizes.",
+      "fitPhrase": "A bit snug",
+      "date": "2026-09-16"
+    },
+    {
+      "id": "r16",
+      "author": "Pia E.",
+      "rating": 4,
+      "sizePurchased": "M",
+      "heightCm": 160,
+      "fit": "small",
+      "comment": "Great denim, but it runs a size small.",
+      "fitPhrase": "runs a size small",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "r17",
+      "author": "Quinn H.",
+      "rating": 5,
+      "sizePurchased": "XXL",
+      "heightCm": 172,
+      "fit": "true",
+      "comment": "My usual XXL fits perfectly.",
+      "fitPhrase": "fits perfectly",
+      "date": "2026-04-05"
+    },
+    {
+      "id": "r18",
+      "author": "Rosa F.",
+      "rating": 5,
+      "sizePurchased": "XS",
+      "heightCm": 169,
+      "fit": "true",
+      "comment": "Exactly my size. Room to move without looking baggy.",
+      "fitPhrase": "Exactly my size",
+      "date": "2026-03-05"
+    },
+    {
+      "id": "r19",
+      "author": "Sam E.",
+      "rating": 4,
+      "sizePurchased": "L",
+      "heightCm": 181,
+      "fit": "small",
+      "comment": "Great denim, but it runs a size small.",
+      "fitPhrase": "runs a size small",
+      "date": "2026-07-20"
+    },
+    {
+      "id": "r20",
+      "author": "Tariq M.",
+      "rating": 5,
+      "sizePurchased": "XL",
+      "heightCm": 158,
+      "fit": "true",
+      "comment": "Exactly my size. Room to move without looking baggy.",
+      "fitPhrase": "Exactly my size",
+      "date": "2026-06-04"
+    },
+    {
+      "id": "r21",
+      "author": "Uma G.",
+      "rating": 5,
+      "sizePurchased": "S",
+      "heightCm": 185,
+      "fit": "small",
+      "comment": "Runs small, I sized up from my usual S.",
+      "fitPhrase": "Runs small",
+      "date": "2026-03-11"
+    },
+    {
+      "id": "r22",
+      "author": "Vic R.",
+      "rating": 5,
+      "sizePurchased": "XS",
+      "heightCm": 193,
+      "fit": "small",
+      "comment": "A bit snug through the thigh. Size up if you're between sizes.",
+      "fitPhrase": "A bit snug",
+      "date": "2026-05-20"
+    },
+    {
+      "id": "r23",
+      "author": "Wren E.",
+      "rating": 4,
+      "sizePurchased": "S",
+      "heightCm": 156,
+      "fit": "small",
+      "comment": "Tight at the waist at first. Glad I went one size up.",
+      "fitPhrase": "Tight at the waist",
+      "date": "2026-05-20"
+    },
+    {
+      "id": "r24",
+      "author": "Xavi O.",
+      "rating": 5,
+      "sizePurchased": "S",
+      "heightCm": 178,
+      "fit": "small",
+      "comment": "Tight at the waist at first. Glad I went one size up.",
+      "fitPhrase": "Tight at the waist",
+      "date": "2026-05-03"
+    },
+    {
+      "id": "r25",
+      "author": "Yara P.",
+      "rating": 4,
+      "sizePurchased": "M",
+      "heightCm": 164,
+      "fit": "small",
+      "comment": "Great denim, but it runs a size small.",
+      "fitPhrase": "runs a size small",
+      "date": "2026-04-17"
+    },
+    {
+      "id": "r26",
+      "author": "Zoe E.",
+      "rating": 4,
+      "sizePurchased": "XXL",
+      "heightCm": 156,
+      "fit": "small",
+      "comment": "Great denim, but it runs a size small.",
+      "fitPhrase": "runs a size small",
+      "date": "2026-03-25"
+    },
+    {
+      "id": "r27",
+      "author": "Arlo W.",
+      "rating": 4,
+      "sizePurchased": "L",
+      "heightCm": 188,
+      "fit": "small",
+      "comment": "Runs small, I sized up from my usual L.",
+      "fitPhrase": "Runs small",
+      "date": "2026-07-12"
+    },
+    {
+      "id": "r28",
+      "author": "Bea Y.",
+      "rating": 5,
+      "sizePurchased": "M",
+      "heightCm": 165,
+      "fit": "small",
+      "comment": "Fits small. My usual M wouldn't button comfortably.",
+      "fitPhrase": "Fits small",
+      "date": "2026-08-08"
+    },
+    {
+      "id": "r29",
+      "author": "Cal Z.",
+      "rating": 5,
+      "sizePurchased": "XXL",
+      "heightCm": 194,
+      "fit": "true",
+      "comment": "Fits as expected, no surprises after the first wash.",
+      "fitPhrase": "Fits as expected",
+      "date": "2026-06-24"
+    },
+    {
+      "id": "r30",
+      "author": "Dina A.",
+      "rating": 4,
+      "sizePurchased": "M",
+      "heightCm": 169,
+      "fit": "small",
+      "comment": "Runs small, I sized up from my usual M.",
+      "fitPhrase": "Runs small",
+      "date": "2026-06-09"
+    },
+    {
+      "id": "r31",
+      "author": "Eli Z.",
+      "rating": 3,
+      "sizePurchased": "XXL",
+      "heightCm": 167,
+      "fit": "true",
+      "comment": "My usual XXL fits perfectly.",
+      "fitPhrase": "fits perfectly",
+      "date": "2026-05-12"
+    },
+    {
+      "id": "r32",
+      "author": "Fay K.",
+      "rating": 5,
+      "sizePurchased": "M",
+      "heightCm": 160,
+      "fit": "small",
+      "comment": "A bit snug through the thigh. Size up if you're between sizes.",
+      "fitPhrase": "A bit snug",
+      "date": "2026-07-20"
+    },
+    {
+      "id": "r33",
+      "author": "Gus V.",
+      "rating": 5,
+      "sizePurchased": "L",
+      "heightCm": 155,
+      "fit": "true",
+      "comment": "True to size. Same as every other L I own.",
+      "fitPhrase": "True to size",
+      "date": "2026-06-26"
+    },
+    {
+      "id": "r34",
+      "author": "Hana C.",
+      "rating": 4,
+      "sizePurchased": "S",
+      "heightCm": 167,
+      "fit": "true",
+      "comment": "Spot on sizing for me. Straight leg sits right on the shoe.",
+      "fitPhrase": "Spot on sizing",
+      "date": "2026-08-13"
+    },
+    {
+      "id": "r35",
+      "author": "Ivo F.",
+      "rating": 3,
+      "sizePurchased": "XXL",
+      "heightCm": 184,
+      "fit": "small",
+      "comment": "A bit snug through the thigh. Size up if you're between sizes.",
+      "fitPhrase": "A bit snug",
+      "date": "2026-03-05"
+    },
+    {
+      "id": "r36",
+      "author": "Jade T.",
+      "rating": 4,
+      "sizePurchased": "XL",
+      "heightCm": 192,
+      "fit": "true",
+      "comment": "Fits as expected, no surprises after the first wash.",
+      "fitPhrase": "Fits as expected",
+      "date": "2026-06-22"
+    },
+    {
+      "id": "r37",
+      "author": "Kai A.",
+      "rating": 4,
+      "sizePurchased": "L",
+      "heightCm": 177,
+      "fit": "small",
+      "comment": "Runs small, I sized up from my usual L.",
+      "fitPhrase": "Runs small",
+      "date": "2026-08-21"
+    },
+    {
+      "id": "r38",
+      "author": "Lena G.",
+      "rating": 4,
+      "sizePurchased": "XL",
+      "heightCm": 161,
+      "fit": "true",
+      "comment": "My usual XL fits perfectly.",
+      "fitPhrase": "fits perfectly",
+      "date": "2026-04-01"
+    },
+    {
+      "id": "r39",
+      "author": "Milo K.",
+      "rating": 5,
+      "sizePurchased": "L",
+      "heightCm": 171,
+      "fit": "small",
+      "comment": "Fits small. My usual L wouldn't button comfortably.",
+      "fitPhrase": "Fits small",
+      "date": "2026-06-27"
+    },
+    {
+      "id": "r40",
+      "author": "Nell V.",
+      "rating": 5,
+      "sizePurchased": "L",
+      "heightCm": 163,
+      "fit": "small",
+      "comment": "Tight at the waist at first. Glad I went one size up.",
+      "fitPhrase": "Tight at the waist",
+      "date": "2026-07-14"
+    }
+  ]
+}

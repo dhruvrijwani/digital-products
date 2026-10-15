@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aureline · Home fragrance</title>
+  <meta name="description" content="Prototype: six scroll-animated sections built as theme-ready components.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23efe9e1'/%3E%3Cpath d='M10 23 16 8l6 15M12.4 17.5h7.2' fill='none' stroke='%232b2420' stroke-width='1.8'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#sections">Skip to content</a>
+
+  <header class="topbar">
+    <a class="wordmark" href="#" aria-label="Aureline home">Aureline</a>
+    <nav class="topnav" aria-label="Main">
+      <a href="#collection">Shop</a>
+      <a href="#ingredients">Ingredients</a>
+      <button class="bag" type="button" id="bagBtn" aria-label="Bag, 0 items">Bag <span id="bagCount">0</span></button>
+    </nav>
+  </header>
+
+  <!-- Fixed section indicator: number + name of the section in view -->
+  <div class="sectionlabel" aria-hidden="true">
+    <span class="sectionlabel__num"><span id="labelNum">01</span> / 06</span>
+    <span class="sectionlabel__name"><span id="labelName">Opening</span></span>
+    <span class="sectionlabel__bar"><span id="labelBar"></span></span>
+  </div>
+
+  <main id="sections"></main>
+
+  <footer class="foot">
+    <p class="foot__big">Light one tonight.</p>
+    <a class="foot__cta" href="#collection">Shop the autumn pour</a>
+    <p class="foot__small">Aureline is an invented brand for a prototype. Photography from Pexels.</p>
+  </footer>
+
+  <!-- Tweak panel: live configuration, standing in for Shopify section settings -->
+  <div class="tweak" id="tweak">
+    <button class="tweak__btn" id="tweakBtn" type="button" aria-expanded="false" aria-controls="tweakPanel">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h12M4 14h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="6" r="2.2" fill="var(--paper)" stroke="currentColor" stroke-width="1.5"/><circle cx="13" cy="14" r="2.2" fill="var(--paper)" stroke="currentColor" stroke-width="1.5"/></svg>
+      Tweak
+    </button>
+    <div class="tweak__panel" id="tweakPanel" role="group" aria-label="Demo settings" hidden>
+      <fieldset class="tweak__group">
+        <legend>Accent colour</legend>
+        <div class="tweak__swatches" id="accentSwatches"></div>
+      </fieldset>
+      <div class="tweak__group">
+        <label for="speedRange">Animation speed <output id="speedOut" for="speedRange">1.0×</output></label>
+        <input type="range" id="speedRange" min="0.5" max="2" step="0.1" value="1">
+      </div>
+      <label class="tweak__switch">
+        <input type="checkbox" id="motionToggle" role="switch">
+        <span class="tweak__track" aria-hidden="true"><span></span></span>
+        Reduced motion
+      </label>
+      <p class="tweak__note">These map to section settings in a Shopify theme.</p>
+    </div>
+  </div>
+
+  <p class="visually-hidden" id="liveRegion" aria-live="polite"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="data/page.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

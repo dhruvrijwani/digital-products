@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Field Journal · Atelier Folio</title>
+  <meta name="description" content="Prototype: live personalisation preview with foil, font, placement and a downloadable proof.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='6' y='3' width='20' height='26' rx='3' fill='%238a4a22'/%3E%3Ctext x='16' y='21' font-family='Georgia' font-size='11' fill='%23f6dd86' text-anchor='middle'%3EAF%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Cinzel:wght@500;600&family=Pinyon+Script&family=Space+Mono&family=Karla:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#studio">Skip to personalisation</a>
+  <header class="topbar">
+    <a class="wordmark" href="#">Atelier Folio</a>
+    <nav class="topnav" aria-label="Main"><a href="#" aria-current="page">Journals</a><a href="#">Wallets</a><a href="#">Gifts</a></nav>
+    <button class="cartbtn" id="cartBtn" type="button" aria-label="Cart, 0 items">Bag <span id="cartCount">0</span></button>
+  </header>
+
+  <main class="pdp">
+    <section class="stage" id="stage" aria-label="Live preview">
+      <div class="stage__tilt" id="tilt">
+        <svg class="cover" id="cover" viewBox="0 0 400 540" role="img" aria-labelledby="coverDesc">
+          <desc id="coverDesc">Preview of the journal cover</desc>
+          <defs>
+            <linearGradient id="leather" x1="0" y1="0" x2="1" y2="1">
+              <stop id="lA" offset="0"/><stop id="lB" offset="0.55"/><stop id="lC" offset="1"/>
+            </linearGradient>
+            <filter id="grain" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0"/>
+              <feComposite in2="SourceGraphic" operator="in"/>
+            </filter>
+            <linearGradient id="foil" x1="0" y1="0" x2="1" y2="0.35" spreadMethod="reflect" gradientTransform="translate(0 0)"></linearGradient>
+            <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+              <stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/>
+              <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+            <clipPath id="coverClip"><rect x="20" y="10" width="340" height="520" rx="14"/></clipPath>
+          </defs>
+          <g id="coverArt">
+            <g class="pages">
+              <rect x="350" y="20" width="30" height="500" rx="5" fill="#ede3cf"/>
+              <path d="M352 30h26M352 60h26M352 90h26M352 120h26M352 150h26M352 180h26M352 210h26M352 240h26M352 270h26M352 300h26M352 330h26M352 360h26M352 390h26M352 420h26M352 450h26M352 480h26M352 510h26" stroke="#d6c9ae" stroke-width="1"/>
+            </g>
+            <g clip-path="url(#coverClip)">
+              <rect x="20" y="10" width="340" height="520" fill="url(#leather)"/>
+              <rect x="20" y="10" width="340" height="520" fill="#000" filter="url(#grain)" opacity="0.32"/>
+              <rect x="34" y="24" width="312" height="492" rx="8" fill="none" stroke="rgba(255,236,210,0.3)" stroke-width="1.6" stroke-dasharray="7 5"/>
+              <rect x="316" y="10" width="22" height="520" fill="#000" opacity="0.3"/>
+              <rect x="316" y="10" width="2" height="520" fill="#fff" opacity="0.12"/>
+              <g id="mono">
+                <text id="monoShadow"></text>
+                <text id="monoMain"></text>
+              </g>
+              <rect id="sheenRect" x="-160" y="10" width="180" height="520" fill="url(#sheen)" transform="skewX(-12)"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="loupe" id="loupe" aria-hidden="true"><svg id="loupeSvg" viewBox="0 0 400 540"><use href="#coverArt"/></svg></div>
+      <p class="stage__hint">Hover the cover to inspect the foil up close</p>
+    </section>
+
+    <section class="studio" id="studio" aria-labelledby="productTitle">
+      <p class="studio__sub" id="productSub"></p>
+      <h1 class="studio__title" id="productTitle"></h1>
+      <p class="studio__price"><span id="price">$68</span><span class="studio__fee" id="feeNote"></span></p>
+
+      <fieldset class="group">
+        <legend>Leather · <b id="leatherName"></b></legend>
+        <div class="swatches" id="leathers"></div>
+      </fieldset>
+
+      <div class="toggle-row">
+        <label class="switch">
+          <input type="checkbox" id="personalise" role="switch" checked>
+          <span class="switch__track" aria-hidden="true"><span></span></span>
+          <span>Add personalisation</span>
+        </label>
+        <span class="toggle-row__fee" id="feeChip"></span>
+      </div>
+
+      <div class="options" id="options">
+        <div class="tabs" id="modes" role="radiogroup" aria-label="Personalisation type"></div>
+        <div class="field">
+          <label for="monoInput" id="monoLabel">Your initials</label>
+          <div class="field__row">
+            <input id="monoInput" type="text" autocomplete="off" spellcheck="false" aria-describedby="monoHelp monoErr">
+            <span class="field__count" id="monoCount">0/3</span>
+          </div>
+          <p class="field__help" id="monoHelp"></p>
+          <p class="field__err" id="monoErr" role="alert"></p>
+        </div>
+
+        <fieldset class="group">
+          <legend>Lettering</legend>
+          <div class="fonts" id="fonts"></div>
+        </fieldset>
+        <fieldset class="group">
+          <legend>Finish</legend>
+          <div class="foils" id="foils"></div>
+        </fieldset>
+        <fieldset class="group">
+          <legend>Placement</legend>
+          <div class="places" id="places"></div>
+        </fieldset>
+      </div>
+
+      <div class="summary" id="summary" aria-live="polite"></div>
+      <div class="actions">
+        <button class="btn btn--primary" id="addBtn" type="button"><span>Add to bag</span></button>
+        <button class="btn btn--ghost" id="proofBtn" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download proof
+        </button>
+      </div>
+      <p class="studio__lead" id="leadTime"></p>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <img id="toastImg" alt="">
+    <div><b>Added to bag</b><span id="toastText"></span></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="data/studio.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

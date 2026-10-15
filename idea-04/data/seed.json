@@ -1,0 +1,27 @@
+{
+  "shop": { "name": "Loop Studio", "currency": "$", "wallTitle": "Seen on you", "wallIntro": "Real sessions from people training with Loop gear. Tap a clip to shop what's in it." },
+  "products": [
+    { "id": "loop-bands", "title": "Loop Band Set", "price": 29, "tint": "#ffd9cf", "ink": "#e0573a", "icon": "bands" },
+    { "id": "grip-mat", "title": "Grip Studio Mat", "price": 78, "tint": "#d9f2e6", "ink": "#139a6c", "icon": "mat" },
+    { "id": "core-wheel", "title": "Core Wheel", "price": 34, "tint": "#e3dcff", "ink": "#5b2ee6", "icon": "wheel" },
+    { "id": "studio-dumbbells", "title": "Studio Dumbbells, 2 × 4 kg", "price": 64, "tint": "#fff0c2", "ink": "#c48a00", "icon": "dumbbell" },
+    { "id": "recovery-roller", "title": "Recovery Roller", "price": 39, "tint": "#d6ecff", "ink": "#2a78c8", "icon": "roller" },
+    { "id": "flow-bottle", "title": "Flow Bottle, 750 ml", "price": 24, "tint": "#ffe0ef", "ink": "#d0407e", "icon": "bottle" }
+  ],
+  "sampleClips": [
+    { "src": "assets/video/ugc-6322779.mp4", "poster": "assets/video/poster-6322779.jpg" },
+    { "src": "assets/video/ugc-7901186.mp4", "poster": "assets/video/poster-7901186.jpg" }
+  ],
+  "clips": [
+    { "id": "c-ana", "status": "pending", "creator": "Ana Lima", "handle": "ana.moves", "productIds": ["loop-bands"], "src": "assets/video/ugc-6326805.mp4", "poster": "assets/video/poster-6326805.jpg", "submittedAgo": "12 min ago" },
+    { "id": "c-dee", "status": "pending", "creator": "Dee Okafor", "handle": "deetrains", "productIds": ["core-wheel"], "src": "assets/video/ugc-8026944.mp4", "poster": "assets/video/poster-8026944.jpg", "submittedAgo": "40 min ago" },
+    { "id": "c-sam", "status": "pending", "creator": "Sam Reyes", "handle": "samflows", "productIds": ["grip-mat"], "src": "assets/video/ugc-8480267.mp4", "poster": "assets/video/poster-8480267.jpg", "submittedAgo": "1 h ago" },
+    { "id": "c-kiri", "status": "pending", "creator": "Kiri Tane", "handle": "kiri.lifts", "productIds": ["studio-dumbbells"], "src": "assets/video/ugc-8893528.mp4", "poster": "assets/video/poster-8893528.jpg", "submittedAgo": "2 h ago" },
+    { "id": "c-mo", "status": "pending", "creator": "Mo Haddad", "handle": "mo.core", "productIds": ["grip-mat"], "src": "assets/video/ugc-7589748.mp4", "poster": "assets/video/poster-7589748.jpg", "submittedAgo": "3 h ago" },
+    { "id": "c-jules", "status": "pending", "creator": "Jules Park", "handle": "julesmoves", "productIds": ["loop-bands"], "src": "assets/video/ugc-8436000.mp4", "poster": "assets/video/poster-8436000.jpg", "submittedAgo": "5 h ago" },
+    { "id": "c-rita", "status": "approved", "creator": "Rita Gomez", "handle": "rita.at.home", "productIds": ["grip-mat", "loop-bands"], "src": "assets/video/ugc-8809586.mp4", "poster": "assets/video/poster-8809586.jpg", "submittedAgo": "2 days ago" },
+    { "id": "c-lea", "status": "approved", "creator": "Lea Novak", "handle": "lea.lifts", "productIds": ["studio-dumbbells"], "src": "assets/video/ugc-6390400.mp4", "poster": "assets/video/poster-6390400.jpg", "submittedAgo": "3 days ago" },
+    { "id": "c-tomi", "status": "approved", "creator": "Tomi Ade", "handle": "tomi.outside", "productIds": ["flow-bottle"], "src": "assets/video/ugc-8457027.mp4", "poster": "assets/video/poster-8457027.jpg", "submittedAgo": "4 days ago" },
+    { "id": "c-nia", "status": "approved", "creator": "Nia Brooks", "handle": "nia.runs", "productIds": ["grip-mat", "flow-bottle"], "src": "assets/video/ugc-32068002.mp4", "poster": "assets/video/poster-32068002.jpg", "submittedAgo": "6 days ago" }
+  ]
+}

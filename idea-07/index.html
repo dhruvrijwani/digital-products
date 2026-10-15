@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Build your ritual box · Ritual Supply</title>
+  <meta name="description" content="Prototype: Build-a-Box bundle builder with tiered discounts.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='9' width='24' height='18' rx='3' fill='%23c9a274'/%3E%3Cpath d='M16 9v18M4 15h24' stroke='%232f4a35' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Work+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#products">Skip to products</a>
+  <header class="topbar">
+    <a class="wordmark" href="#">Ritual Supply</a>
+    <nav class="topnav" aria-label="Main"><a href="#">Candles</a><a href="#">Oils</a><a href="#" aria-current="page">Build a box</a></nav>
+    <button class="cartbtn" id="cartBtn" type="button" aria-label="Cart, 0 items">Cart <span id="cartCount">0</span></button>
+  </header>
+
+  <main class="builder">
+    <section class="pick" aria-labelledby="pageTitle">
+      <h1 id="pageTitle"></h1>
+      <p class="pick__intro" id="pageIntro"></p>
+      <ul class="products" id="products" aria-label="Minis"></ul>
+    </section>
+
+    <aside class="boxpanel" id="boxPanel" aria-labelledby="boxTitle">
+      <button class="boxpanel__peek" id="peek" type="button" aria-expanded="false" aria-controls="boxPanel">
+        <span class="peek__thumbs" id="peekThumbs"></span>
+        <span class="peek__text"><b id="peekCount">0 / 5</b><span id="peekPrice">$0</span></span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="boxpanel__inner">
+        <h2 class="boxpanel__title" id="boxTitle">Your box</h2>
+        <div class="sizes" id="sizes" role="radiogroup" aria-label="Box size"></div>
+
+        <div class="box" id="box">
+          <div class="box__inside">
+            <ol class="slots" id="slots" aria-label="Box slots"></ol>
+          </div>
+          <div class="box__lid" id="lid" aria-hidden="true">
+            <span class="ribbon ribbon--v"></span><span class="ribbon ribbon--h"></span>
+            <span class="box__tag" id="boxTag">Ritual box</span>
+          </div>
+        </div>
+
+        <p class="box__status" id="status" aria-live="polite"></p>
+        <div class="meter" aria-hidden="true"><span id="meterFill"></span></div>
+
+        <dl class="sum">
+          <div><dt>Items</dt><dd><s id="sumFull">$0</s></dd></div>
+          <div class="sum__save"><dt id="saveLabel">Box saving</dt><dd id="sumSave">−$0</dd></div>
+          <div class="sum__total"><dt>Box price</dt><dd id="sumTotal">$0</dd></div>
+        </dl>
+        <button class="btn btn--primary" id="addBox" type="button" aria-disabled="true">Fill your box to continue</button>
+        <button class="linkbtn" id="editBox" type="button" hidden>Open the box to change items</button>
+      </div>
+    </aside>
+  </main>
+
+  <div class="flyer-layer" aria-hidden="true"></div>
+  <p class="visually-hidden" id="liveRegion" aria-live="polite"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+  <script src="data/box.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

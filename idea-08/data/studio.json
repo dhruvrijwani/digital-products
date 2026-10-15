@@ -1,0 +1,38 @@
+{
+  "shop": { "name": "Atelier Folio", "currency": "$" },
+  "product": {
+    "title": "The Field Journal",
+    "subtitle": "Vegetable-tanned leather cover, A5, 192 pages",
+    "price": 68,
+    "leathers": [
+      { "id": "cognac", "name": "Cognac", "base": "#8a4a22", "light": "#a8622f", "dark": "#5e2f14" },
+      { "id": "black", "name": "Black", "base": "#1f1c1b", "light": "#33302e", "dark": "#0f0d0d" },
+      { "id": "forest", "name": "Forest", "base": "#24392b", "light": "#355440", "dark": "#14231a" }
+    ]
+  },
+  "personalisation": {
+    "modes": [
+      { "id": "initials", "label": "Initials", "max": 3, "fee": 15, "placeholder": "DRK" },
+      { "id": "name", "label": "Name", "max": 14, "fee": 20, "placeholder": "Dhruv" }
+    ],
+    "fonts": [
+      { "id": "classic", "label": "Classic", "family": "Cormorant Garamond", "weight": 600, "scale": 1, "track": 2 },
+      { "id": "roman", "label": "Roman", "family": "Cinzel", "weight": 600, "scale": 0.86, "track": 4 },
+      { "id": "script", "label": "Script", "family": "Pinyon Script", "weight": 400, "scale": 1.22, "track": 0 },
+      { "id": "modern", "label": "Modern", "family": "Space Mono", "weight": 400, "scale": 0.8, "track": 3 }
+    ],
+    "foils": [
+      { "id": "gold", "label": "Gold foil", "stops": ["#7a5a1f", "#f6dd86", "#b88a33", "#fff2b8", "#8c6a26"] },
+      { "id": "silver", "label": "Silver foil", "stops": ["#6f7377", "#f4f6f8", "#9ea3a8", "#ffffff", "#7b8085"] },
+      { "id": "copper", "label": "Copper foil", "stops": ["#7a3b1d", "#f2a77a", "#b2582c", "#ffd2b5", "#8a4322"] },
+      { "id": "blind", "label": "Blind deboss", "stops": [] }
+    ],
+    "placements": [
+      { "id": "br", "label": "Bottom right" },
+      { "id": "center", "label": "Centre" },
+      { "id": "tl", "label": "Top left" }
+    ],
+    "allowed": "A-Z, a-z, spaces, full stops and &",
+    "leadTime": "Personalised journals ship in 2 working days."
+  }
+}

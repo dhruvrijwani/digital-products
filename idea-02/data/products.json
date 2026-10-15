@@ -1,0 +1,106 @@
+{
+  "shop": {
+    "name": "Northline Audio",
+    "collection": "Listening gear",
+    "intro": "Headphones, earbuds and speakers, measured the same way. Tick up to three to compare them side by side.",
+    "currency": "$",
+    "maxCompare": 3
+  },
+  "specs": [
+    { "key": "price", "label": "Price", "format": "price", "better": "lower" },
+    { "key": "type", "label": "Type", "format": "text" },
+    { "key": "battery", "label": "Battery life", "format": "number", "unit": "h", "better": "higher", "empty": "Not battery powered" },
+    { "key": "weight", "label": "Weight", "format": "number", "unit": "g", "better": "lower" },
+    { "key": "driver", "label": "Driver size", "format": "number", "unit": "mm", "better": "higher" },
+    { "key": "anc", "label": "Noise cancelling", "format": "bool", "better": "yes", "empty": "Not applicable" },
+    { "key": "water", "label": "Water resistance", "format": "ip", "better": "higher", "empty": "None" },
+    { "key": "bluetooth", "label": "Bluetooth", "format": "number", "prefix": "v", "decimals": 1, "better": "higher", "empty": "Wired only" },
+    { "key": "latency", "label": "Audio latency", "format": "number", "unit": "ms", "better": "lower" },
+    { "key": "quickCharge", "label": "Charge time for 3 h", "format": "number", "unit": "min", "better": "lower", "empty": "Not battery powered" },
+    { "key": "multipoint", "label": "Two devices at once", "format": "bool", "better": "yes" },
+    { "key": "colours", "label": "Colours", "format": "list" },
+    { "key": "warranty", "label": "Warranty", "format": "number", "unit": "yr", "better": "higher" }
+  ],
+  "products": [
+    {
+      "id": "axis-over-ear",
+      "title": "Axis Over-Ear",
+      "category": "Over-ear",
+      "price": 299,
+      "rating": 4.7,
+      "ratingCount": 1284,
+      "image": "assets/img/axis-over-ear.jpg",
+      "specs": { "price": 299, "type": "Wireless over-ear", "battery": 40, "weight": 254, "driver": 40, "anc": true, "water": null, "bluetooth": 5.3, "latency": 80, "quickCharge": 10, "multipoint": true, "colours": ["Graphite", "Bone"], "warranty": 2 }
+    },
+    {
+      "id": "meridian-anc",
+      "title": "Meridian ANC",
+      "category": "Over-ear",
+      "price": 349,
+      "rating": 4.8,
+      "ratingCount": 902,
+      "image": "assets/img/meridian-anc.jpg",
+      "specs": { "price": 349, "type": "Wireless over-ear", "battery": 32, "weight": 268, "driver": 40, "anc": true, "water": null, "bluetooth": 5.3, "latency": 70, "quickCharge": 5, "multipoint": true, "colours": ["Chalk", "Graphite", "Sand"], "warranty": 2 }
+    },
+    {
+      "id": "drift-on-ear",
+      "title": "Drift On-Ear",
+      "category": "On-ear",
+      "price": 149,
+      "rating": 4.5,
+      "ratingCount": 611,
+      "image": "assets/img/drift-on-ear.jpg",
+      "specs": { "price": 149, "type": "Wireless on-ear", "battery": 50, "weight": 180, "driver": 32, "anc": false, "water": 4, "bluetooth": 5.2, "latency": 120, "quickCharge": 15, "multipoint": false, "colours": ["Chalk", "Sky"], "warranty": 1 }
+    },
+    {
+      "id": "studio-reference",
+      "title": "Studio Reference",
+      "category": "Wired",
+      "price": 199,
+      "rating": 4.9,
+      "ratingCount": 433,
+      "image": "assets/img/studio-ref.jpg",
+      "specs": { "price": 199, "type": "Wired over-ear", "battery": null, "weight": 290, "driver": 50, "anc": false, "water": null, "bluetooth": null, "latency": 0, "quickCharge": null, "multipoint": false, "colours": ["Black"], "warranty": 3 }
+    },
+    {
+      "id": "pocket-buds",
+      "title": "Pocket Buds",
+      "category": "In-ear",
+      "price": 179,
+      "rating": 4.6,
+      "ratingCount": 1860,
+      "image": "assets/img/pocket-buds.jpg",
+      "specs": { "price": 179, "type": "True wireless earbuds", "battery": 32, "weight": 5, "driver": 11, "anc": true, "water": 5, "bluetooth": 5.3, "latency": 60, "quickCharge": 5, "multipoint": true, "colours": ["Graphite", "Mist"], "warranty": 1 }
+    },
+    {
+      "id": "pulse-wired",
+      "title": "Pulse Wired",
+      "category": "Wired",
+      "price": 89,
+      "rating": 4.3,
+      "ratingCount": 377,
+      "image": "assets/img/pulse-wired.jpg",
+      "specs": { "price": 89, "type": "Wired over-ear", "battery": null, "weight": 220, "driver": 40, "anc": false, "water": null, "bluetooth": null, "latency": 0, "quickCharge": null, "multipoint": false, "colours": ["Cream"], "warranty": 1 }
+    },
+    {
+      "id": "cube-home",
+      "title": "Cube Home Speaker",
+      "category": "Speaker",
+      "price": 249,
+      "rating": 4.4,
+      "ratingCount": 288,
+      "image": "assets/img/cube-home.jpg",
+      "specs": { "price": 249, "type": "Smart home speaker", "battery": null, "weight": 1150, "driver": 76, "anc": null, "water": null, "bluetooth": 5.0, "latency": 150, "quickCharge": null, "multipoint": true, "colours": ["Graphite"], "warranty": 2 }
+    },
+    {
+      "id": "arc-desk",
+      "title": "Arc Desk Speaker",
+      "category": "Speaker",
+      "price": 129,
+      "rating": 4.5,
+      "ratingCount": 512,
+      "image": "assets/img/arc-desk.jpg",
+      "specs": { "price": 129, "type": "Portable speaker", "battery": 18, "weight": 640, "driver": 52, "anc": null, "water": 7, "bluetooth": 5.3, "latency": 110, "quickCharge": 20, "multipoint": true, "colours": ["Slate", "Clay"], "warranty": 2 }
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "shop": {
+    "name": "Fieldnote Active",
+    "collection": "The Field Edit",
+    "intro": "Training layers worn and filmed by the people who sweat in them. Open a clip to see how each piece moves.",
+    "currency": "$"
+  },
+  "products": [
+    {
+      "id": "arc-contour-legging",
+      "title": "Arc Contour Legging",
+      "price": 68,
+      "rating": 4.8,
+      "ratingCount": 286,
+      "badge": "Summer Collection",
+      "colors": [
+        { "name": "Clay", "hex": "#a3604a", "image": "assets/img/clay-1.jpg" },
+        { "name": "Ink", "hex": "#26252a", "image": "assets/img/ink-4.jpg" },
+        { "name": "Sage", "hex": "#8d9d86", "image": "assets/img/sage-1.jpg" }
+      ],
+      "sizes": [
+        { "label": "XS", "available": true },
+        { "label": "S", "available": true },
+        { "label": "M", "available": true },
+        { "label": "L", "available": true },
+        { "label": "XL", "available": true },
+        { "label": "XXL", "available": false }
+      ],
+      "video": { "src": "assets/video/ugc-8809586.mp4", "poster": "assets/video/poster-8809586.jpg", "creator": "Maya R." },
+      "features": [
+        { "title": "Arc-cut waistband", "body": "The rise curves higher at the back, so it stays put through deep squats and long hinges.", "highlight": "stays put" },
+        { "title": "Brushed matte finish", "body": "A soft nylon blend with no gloss under gym lights.", "highlight": "no gloss" },
+        { "title": "Gusset that moves with you", "body": "A diamond gusset gives full range in lunges and lateral work.", "highlight": "full range" }
+      ],
+      "reviews": [
+        { "quote": "I did a full leg day in these and never once hiked the waistband up. It just stays where I put it.", "author": "Maya R.", "helpful": 94, "highlight": "never once hiked the waistband up" },
+        { "quote": "Firm hold without feeling like I'm wearing a wetsuit. The clay colour is lovely in daylight.", "author": "Dana K.", "helpful": 61, "highlight": "Firm hold" },
+        { "quote": "Squat-tested in front of a window. Nothing shows through.", "author": "Elise T.", "helpful": 38, "highlight": "Nothing shows through" }
+      ]
+    },
+    {
+      "id": "meridian-seamless-set",
+      "title": "Meridian Seamless Set",
+      "price": 92,
+      "rating": 4.6,
+      "ratingCount": 164,
+      "badge": "Bestseller",
+      "colors": [
+        { "name": "Fog", "hex": "#b7b8b1", "image": "assets/img/fog-1.jpg" },
+        { "name": "Ink", "hex": "#26252a", "image": "assets/img/ink-2.jpg" },
+        { "name": "Sand", "hex": "#cdb79b", "image": "assets/img/sand-1.jpg" }
+      ],
+      "sizes": [
+        { "label": "XS", "available": true },
+        { "label": "S", "available": false },
+        { "label": "M", "available": true },
+        { "label": "L", "available": true },
+        { "label": "XL", "available": true },
+        { "label": "XXL", "available": true }
+      ],
+      "video": { "src": "assets/video/ugc-8480267.mp4", "poster": "assets/video/poster-8480267.jpg", "creator": "Noor A." },
+      "features": [
+        { "title": "Knitted in one piece", "body": "Circular knitting removes side seams, so nothing rubs on long flows.", "highlight": "nothing rubs" },
+        { "title": "Zoned rib texture", "body": "Tighter ribs at the core and looser knit at the knee.", "highlight": "Tighter ribs" },
+        { "title": "Top and legging included", "body": "Sold as a matched set, priced below buying both pieces.", "highlight": "matched set" }
+      ],
+      "reviews": [
+        { "quote": "No seams means no red lines after a ninety-minute class. That alone sold me.", "author": "Noor A.", "helpful": 72, "highlight": "no red lines" },
+        { "quote": "The fog colour looks expensive. I wear the top on its own on weekends.", "author": "Jess W.", "helpful": 40, "highlight": "looks expensive" },
+        { "quote": "Size down if you are between sizes, it gives a little.", "author": "Priya S.", "helpful": 33, "highlight": "Size down" }
+      ]
+    },
+    {
+      "id": "tempo-five-inch-short",
+      "title": "Tempo Five-Inch Short",
+      "price": 46,
+      "rating": 4.7,
+      "ratingCount": 342,
+      "badge": "New",
+      "colors": [
+        { "name": "Mint", "hex": "#a9c3b3", "image": "assets/img/mint-1.jpg" },
+        { "name": "Ink", "hex": "#26252a", "image": "assets/img/ink-1.jpg" },
+        { "name": "Sand", "hex": "#cdb79b", "image": "assets/img/sand-1.jpg" }
+      ],
+      "sizes": [
+        { "label": "XS", "available": true },
+        { "label": "S", "available": true },
+        { "label": "M", "available": true },
+        { "label": "L", "available": false },
+        { "label": "XL", "available": true },
+        { "label": "XXL", "available": true }
+      ],
+      "video": { "src": "assets/video/ugc-7589748.mp4", "poster": "assets/video/poster-7589748.jpg", "creator": "Lena O." },
+      "features": [
+        { "title": "Five-inch inseam that stays down", "body": "A silicone hem grip keeps the leg from riding up on sprints.", "highlight": "keeps the leg from riding up" },
+        { "title": "Two drop-in phone pockets", "body": "Deep enough for a large phone, flat against the thigh.", "highlight": "flat against the thigh" },
+        { "title": "Quick-dry weave", "body": "Dries in about half the time of a cotton-blend short.", "highlight": "half the time" }
+      ],
+      "reviews": [
+        { "quote": "Ran a hot 10k and the hem never moved. Pockets held my phone without bouncing.", "author": "Lena O.", "helpful": 88, "highlight": "the hem never moved" },
+        { "quote": "Mint is softer in person than on screen, in a good way.", "author": "Carmen V.", "helpful": 29, "highlight": "softer in person" },
+        { "quote": "Finally a short that doesn't need adjusting between sets.", "author": "Hana B.", "helpful": 51, "highlight": "doesn't need adjusting" }
+      ]
+    },
+    {
+      "id": "halo-longline-bra",
+      "title": "Halo Longline Bra",
+      "price": 52,
+      "rating": 4.9,
+      "ratingCount": 128,
+      "badge": "Bestseller",
+      "colors": [
+        { "name": "Plum", "hex": "#5c3439", "image": "assets/img/plum-1.jpg" },
+        { "name": "Olive", "hex": "#6c6b46", "image": "assets/img/olive-1.jpg" },
+        { "name": "Ink", "hex": "#26252a", "image": "assets/img/ink-3.jpg" }
+      ],
+      "sizes": [
+        { "label": "XS", "available": true },
+        { "label": "S", "available": true },
+        { "label": "M", "available": true },
+        { "label": "L", "available": true },
+        { "label": "XL", "available": false },
+        { "label": "XXL", "available": true }
+      ],
+      "video": { "src": "assets/video/ugc-8026944.mp4", "poster": "assets/video/poster-8026944.jpg", "creator": "Amara J." },
+      "features": [
+        { "title": "Medium support, longline cut", "body": "A deeper band spreads the hold, so it sits flat under a crop.", "highlight": "sits flat" },
+        { "title": "Removable cups", "body": "Shaped cups that stay in place in the wash.", "highlight": "stay in place" },
+        { "title": "Crossback straps", "body": "Straps sit wide of the shoulder blades for overhead work.", "highlight": "overhead work" }
+      ],
+      "reviews": [
+        { "quote": "The band doesn't roll when I do ab work, which every other longline does.", "author": "Amara J.", "helpful": 67, "highlight": "doesn't roll" },
+        { "quote": "Plum is the colour I didn't know I needed.", "author": "Sasha L.", "helpful": 24, "highlight": "didn't know I needed" },
+        { "quote": "Enough support for HIIT and soft enough to wear all day.", "author": "Rae M.", "helpful": 45, "highlight": "Enough support for HIIT" }
+      ]
+    },
+    {
+      "id": "horizon-seven-eighths-legging",
+      "title": "Horizon 7/8 Legging",
+      "price": 64,
+      "rating": 4.5,
+      "ratingCount": 211,
+      "badge": "Summer Collection",
+      "colors": [
+        { "name": "Ink", "hex": "#26252a", "image": "assets/img/ink-1.jpg" },
+        { "name": "Fog", "hex": "#b7b8b1", "image": "assets/img/fog-2.jpg" },
+        { "name": "Clay", "hex": "#a3604a", "image": "assets/img/clay-1.jpg" }
+      ],
+      "sizes": [
+        { "label": "XS", "available": false },
+        { "label": "S", "available": true },
+        { "label": "M", "available": true },
+        { "label": "L", "available": true },
+        { "label": "XL", "available": true },
+        { "label": "XXL", "available": true }
+      ],
+      "video": { "src": "assets/video/ugc-8436000.mp4", "poster": "assets/video/poster-8436000.jpg", "creator": "Ivy C." },
+      "features": [
+        { "title": "Ankle-skimming 7/8 length", "body": "Ends above the ankle bone, so it clears trainers and cleats.", "highlight": "clears trainers" },
+        { "title": "Sweat-wicking knit", "body": "Pulls moisture to the outer face, where it dries fastest.", "highlight": "dries fastest" },
+        { "title": "Hidden key pocket", "body": "A small zip pocket inside the back waistband.", "highlight": "zip pocket" }
+      ],
+      "reviews": [
+        { "quote": "Perfect for suspension training. Nothing bunches at the ankle.", "author": "Ivy C.", "helpful": 58, "highlight": "Nothing bunches" },
+        { "quote": "I'm 5'3 and the 7/8 is full length on me, which I love.", "author": "Mei H.", "helpful": 47, "highlight": "full length on me" },
+        { "quote": "The key pocket is small but it is exactly what I needed for runs.", "author": "Tara D.", "helpful": 19, "highlight": "exactly what I needed" }
+      ]
+    },
+    {
+      "id": "stride-panel-legging",
+      "title": "Stride Panel Legging",
+      "price": 72,
+      "rating": 4.4,
+      "ratingCount": 97,
+      "badge": "New",
+      "colors": [
+        { "name": "Lemon", "hex": "#d6b54c", "image": "assets/img/lemon-1.jpg" },
+        { "name": "Ink", "hex": "#26252a", "image": "assets/img/ink-4.jpg" },
+        { "name": "Fog", "hex": "#b7b8b1", "image": "assets/img/fog-2.jpg" }
+      ],
+      "sizes": [
+        { "label": "XS", "available": true },
+        { "label": "S", "available": true },
+        { "label": "M", "available": false },
+        { "label": "L", "available": true },
+        { "label": "XL", "available": true },
+        { "label": "XXL", "available": false }
+      ],
+      "video": { "src": "assets/video/ugc-6326805.mp4", "poster": "assets/video/poster-6326805.jpg", "creator": "Zoe P." },
+      "features": [
+        { "title": "Contrast side panel", "body": "A stripe down the outer leg that lengthens the line.", "highlight": "lengthens the line" },
+        { "title": "Band-friendly fabric", "body": "Grips resistance bands so they don't slide on the thigh.", "highlight": "don't slide" },
+        { "title": "High-rise, double layer", "body": "Two layers at the waist for a smooth front.", "highlight": "smooth front" }
+      ],
+      "reviews": [
+        { "quote": "My mini band stays exactly where I put it on these. Big deal for glute days.", "author": "Zoe P.", "helpful": 41, "highlight": "stays exactly where I put it" },
+        { "quote": "Bold colour, but the stripe makes it easy to style.", "author": "Ada N.", "helpful": 17, "highlight": "easy to style" },
+        { "quote": "Runs slightly long. I'd love a petite length.", "author": "Kim R.", "helpful": 22, "highlight": "Runs slightly long" }
+      ]
+    },
+    {
+      "id": "ridge-rib-set",
+      "title": "Ridge Rib Set",
+      "price": 88,
+      "rating": 4.7,
+      "ratingCount": 153,
+      "badge": "Summer Collection",
+      "colors": [
+        { "name": "Sage", "hex": "#8d9d86", "image": "assets/img/sage-1.jpg" },
+        { "name": "Olive", "hex": "#6c6b46", "image": "assets/img/olive-1.jpg" },
+        { "name": "Sand", "hex": "#cdb79b", "image": "assets/img/sand-1.jpg" }
+      ],
+      "sizes": [
+        { "label": "XS", "available": true },
+        { "label": "S", "available": true },
+        { "label": "M", "available": true },
+        { "label": "L", "available": true },
+        { "label": "XL", "available": true },
+        { "label": "XXL", "available": true }
+      ],
+      "video": { "src": "assets/video/ugc-8893528.mp4", "poster": "assets/video/poster-8893528.jpg", "creator": "Bea K." },
+      "features": [
+        { "title": "Wide rib that holds its shape", "body": "The rib recovers after a stretch instead of bagging out at the knee.", "highlight": "recovers after a stretch" },
+        { "title": "Sports bra with a high neck", "body": "Covers more for overhead presses and inversions.", "highlight": "Covers more" },
+        { "title": "Garment-dyed colour", "body": "Each piece is dyed after sewing for a soft, even tone.", "highlight": "soft, even tone" }
+      ],
+      "reviews": [
+        { "quote": "Lifted heavy all morning and the knees still looked new by lunch.", "author": "Bea K.", "helpful": 53, "highlight": "still looked new" },
+        { "quote": "Sage is calm and photographs beautifully.", "author": "Rosa F.", "helpful": 21, "highlight": "photographs beautifully" },
+        { "quote": "The high neck is great for yoga, nothing slips.", "author": "Jo E.", "helpful": 30, "highlight": "nothing slips" }
+      ]
+    },
+    {
+      "id": "studio-wrap-layer",
+      "title": "Studio Wrap Layer",
+      "price": 84,
+      "rating": 4.6,
+      "ratingCount": 76,
+      "badge": "New",
+      "colors": [
+        { "name": "Ink", "hex": "#26252a", "image": "assets/img/ink-2.jpg" },
+        { "name": "Fog", "hex": "#b7b8b1", "image": "assets/img/fog-2.jpg" },
+        { "name": "Plum", "hex": "#5c3439", "image": "assets/img/plum-1.jpg" }
+      ],
+      "sizes": [
+        { "label": "XS", "available": true },
+        { "label": "S", "available": true },
+        { "label": "M", "available": true },
+        { "label": "L", "available": true },
+        { "label": "XL", "available": false },
+        { "label": "XXL", "available": false }
+      ],
+      "video": { "src": "assets/video/ugc-6390400.mp4", "poster": "assets/video/poster-6390400.jpg", "creator": "Ola T." },
+      "features": [
+        { "title": "Wrap front with thumbholes", "body": "Ties at the waist and keeps your hands warm between sets.", "highlight": "keeps your hands warm" },
+        { "title": "Lightweight brushed back", "body": "Warm on the walk in, light enough to keep on for mobility.", "highlight": "light enough to keep on" },
+        { "title": "Drops into a tote", "body": "Packs flat into its own back pocket.", "highlight": "Packs flat" }
+      ],
+      "reviews": [
+        { "quote": "This is the layer I grab on cold mornings. It packs into my gym bag without creasing.", "author": "Ola T.", "helpful": 36, "highlight": "without creasing" },
+        { "quote": "Thumbholes are perfectly placed for barre.", "author": "Lucia G.", "helpful": 14, "highlight": "perfectly placed" },
+        { "quote": "Looks sharp enough for coffee after class.", "author": "Wren A.", "helpful": 27, "highlight": "sharp enough for coffee" }
+      ]
+    }
+  ]
+}

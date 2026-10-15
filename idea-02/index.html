@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Listening gear · Northline Audio</title>
+  <meta name="description" content="Prototype: compare dock with an expanding spec comparison sheet.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f3f3ef'/%3E%3Cpath d='M8 23V9l16 14V9' fill='none' stroke='%231f2226' stroke-width='2.6' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='9' r='2.6' fill='%232448ff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#grid">Skip to products</a>
+
+  <header class="topbar">
+    <a class="wordmark" href="#" aria-label="Northline Audio home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 25V7l18 18V7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><circle cx="25" cy="7" r="2.8" fill="var(--volt)"/></svg>
+      <span>Northline</span>
+    </a>
+    <nav class="topnav" aria-label="Main">
+      <a href="#" aria-current="page">Shop</a>
+      <a href="#">Sound lab</a>
+      <a href="#">Support</a>
+    </nav>
+    <button class="cart" id="cartBtn" type="button" aria-label="Cart, 0 items">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5h2.2l2 10.5h10.3L20 8H6.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="9" cy="19" r="1.3" fill="currentColor"/><circle cx="17" cy="19" r="1.3" fill="currentColor"/></svg>
+      <span class="cart__count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main class="page">
+    <section class="intro" aria-labelledby="collectionTitle">
+      <h1 id="collectionTitle" class="intro__title"></h1>
+      <p class="intro__lede" id="collectionIntro"></p>
+      <p class="intro__count" id="productCount"></p>
+    </section>
+
+    <ul class="grid" id="grid" aria-label="Products"></ul>
+
+    <footer class="foot">Northline Audio is an invented brand for a prototype. Photos from Pexels. Specs are mock data.</footer>
+  </main>
+
+  <!-- Compare dock -->
+  <aside class="dock" id="dock" aria-label="Compare tray" hidden>
+    <div class="dock__inner">
+      <p class="dock__count" aria-live="polite"><b id="dockCount">0</b> of 3<span class="dock__count-label"> selected</span></p>
+      <ol class="dock__slots" id="dockSlots">
+        <li class="slot"><span class="slot__ph" aria-hidden="true"></span></li>
+        <li class="slot"><span class="slot__ph" aria-hidden="true"></span></li>
+        <li class="slot"><span class="slot__ph" aria-hidden="true"></span></li>
+      </ol>
+      <div class="dock__actions">
+        <button class="dock__clear" id="dockClear" type="button">Clear</button>
+        <button class="dock__go" id="dockGo" type="button" aria-disabled="true">
+          <span>Compare now</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <p class="dock__tip" id="dockTip" role="status"></p>
+  </aside>
+
+  <!-- Comparison sheet -->
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+    <div class="sheet__backdrop" data-close></div>
+    <div class="sheet__panel" id="sheetPanel">
+      <div class="sheet__bar">
+        <h2 class="sheet__title" id="sheetTitle">Comparison</h2>
+        <label class="switch">
+          <input type="checkbox" id="diffToggle" role="switch">
+          <span class="switch__track" aria-hidden="true"><span class="switch__thumb"></span></span>
+          <span class="switch__label">Show differences only</span>
+        </label>
+        <button class="sheet__close" id="sheetClose" type="button" aria-label="Close comparison" data-close>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="sheet__scroll" id="sheetScroll">
+        <div class="ctable" id="ctable" role="table" aria-labelledby="sheetTitle"></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="visually-hidden" id="liveRegion" aria-live="polite"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+  <script src="data/products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

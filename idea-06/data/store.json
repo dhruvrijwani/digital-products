@@ -1,0 +1,28 @@
+{
+  "shop": {
+    "name": "Halfmile",
+    "collection": "Training kit",
+    "currency": "$",
+    "shippingFee": 8
+  },
+  "rewards": [
+    { "id": "ship", "threshold": 100, "type": "shipping", "label": "Free shipping", "short": "Free shipping", "icon": "truck" },
+    { "id": "gift", "threshold": 150, "type": "gift", "label": "Free gift of your choice", "short": "Free gift", "icon": "gift" },
+    { "id": "off", "threshold": 200, "type": "discount", "value": 15, "label": "15% off your order", "short": "15% off", "icon": "percent" }
+  ],
+  "gifts": [
+    { "id": "g-bottle", "title": "Halfmile bottle", "note": "750 ml, steel", "value": 22, "art": "bottle", "tint": "#dfe7ff" },
+    { "id": "g-socks", "title": "Grip socks", "note": "Two pairs", "value": 18, "art": "socks", "tint": "#ffe3d6" },
+    { "id": "g-band", "title": "Mini band", "note": "Medium resistance", "value": 14, "art": "band", "tint": "#e4f5dc" }
+  ],
+  "products": [
+    { "id": "arc-legging", "title": "Arc Legging", "color": "Clay", "price": 68, "image": "assets/img/clay-1.jpg" },
+    { "id": "seamless-set", "title": "Seamless Set", "color": "Fog", "price": 92, "image": "assets/img/fog-1.jpg" },
+    { "id": "tempo-short", "title": "Tempo Short", "color": "Mint", "price": 46, "image": "assets/img/mint-1.jpg" },
+    { "id": "halo-bra", "title": "Halo Bra", "color": "Plum", "price": 52, "image": "assets/img/plum-1.jpg" },
+    { "id": "horizon-legging", "title": "Horizon 7/8 Legging", "color": "Ink", "price": 64, "image": "assets/img/ink-1.jpg" },
+    { "id": "stride-legging", "title": "Stride Legging", "color": "Lemon", "price": 72, "image": "assets/img/lemon-1.jpg" },
+    { "id": "ridge-set", "title": "Ridge Rib Set", "color": "Sage", "price": 88, "image": "assets/img/sage-1.jpg" },
+    { "id": "wrap-layer", "title": "Studio Wrap", "color": "Ink", "price": 84, "image": "assets/img/ink-2.jpg" }
+  ]
+}

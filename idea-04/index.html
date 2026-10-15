@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Loop Studio · Creator clips</title>
+  <meta name="description" content="Prototype: creator upload, merchant approval and a shoppable video wall, driven by shared local state.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%235b2ee6'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23fff' stroke-width='3.4'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#views">Skip to content</a>
+
+  <header class="appbar">
+    <a class="logo" href="#" aria-label="Loop Studio home">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="12" fill="var(--violet)"/><circle cx="18" cy="18" r="8" fill="none" stroke="#fff" stroke-width="3.6"/><circle cx="25.5" cy="10.5" r="3" fill="#ffd9cf"/></svg>
+      <span>Loop Studio</span>
+    </a>
+
+    <nav class="switcher" aria-label="Demo views">
+      <div class="switcher__list" role="tablist" id="switcher">
+        <span class="switcher__pill" aria-hidden="true"></span>
+        <button class="switcher__tab" role="tab" id="tab-upload" aria-controls="view-upload" data-view="upload">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5m0 0L7.5 9.5M12 5l4.5 4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="switcher__label">Creator upload</span>
+        </button>
+        <button class="switcher__tab" role="tab" id="tab-queue" aria-controls="view-queue" data-view="queue">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="switcher__label">Approval queue</span>
+          <span class="switcher__badge" id="queueBadge" aria-label="pending clips">0</span>
+        </button>
+        <button class="switcher__tab" role="tab" id="tab-wall" aria-controls="view-wall" data-view="wall">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="4" width="7" height="6" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="4" y="15" width="7" height="5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="12" width="7" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="switcher__label">Storefront wall</span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="appbar__end">
+      <button class="cart" id="cartBtn" type="button" aria-label="Cart, 0 items">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1.2 11H7.2L6 8Z M9 8V7a3 3 0 0 1 6 0v1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>
+        <span id="cartCount">0</span>
+      </button>
+      <button class="reset" id="resetBtn" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v3.7h3.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Reset demo</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="views" class="views">
+    <!-- 1. Creator upload -->
+    <section class="view view--upload" id="view-upload" role="tabpanel" aria-labelledby="tab-upload" hidden>
+      <div class="upload">
+        <div class="upload__intro">
+          <p class="eyebrowless">For creators</p>
+          <h1 class="h-display">Show us how you train with Loop.</h1>
+          <p class="upload__lede">Send a short vertical clip. If it's approved, it goes on our storefront with your handle, and you get 20% off your next order.</p>
+          <ul class="upload__rules">
+            <li>Vertical video, up to 60 seconds</li>
+            <li>Loop gear visible in the shot</li>
+            <li>Only people who agreed to be filmed</li>
+          </ul>
+        </div>
+
+        <form class="upload__card" id="uploadForm" novalidate>
+          <div class="drop" id="drop">
+            <input class="drop__input" id="fileInput" type="file" accept="video/*" aria-describedby="dropHint">
+            <div class="drop__idle">
+              <span class="drop__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48"><rect x="12" y="6" width="24" height="36" rx="7" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 30V17m0 0-5 5m5-5 5 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="drop__title">Drop your clip here</p>
+              <p class="drop__hint" id="dropHint">or <label for="fileInput" class="drop__browse">choose a file</label> · MP4 or MOV</p>
+              <button class="link-btn" type="button" id="sampleBtn">No clip handy? Use a sample</button>
+            </div>
+            <div class="drop__busy" hidden>
+              <div class="ring" aria-hidden="true">
+                <svg viewBox="0 0 120 120"><circle class="ring__bg" cx="60" cy="60" r="52"/><circle class="ring__fg" cx="60" cy="60" r="52"/></svg>
+                <video class="ring__preview" muted loop playsinline preload="metadata"></video>
+                <span class="ring__pct" id="ringPct">0%</span>
+              </div>
+              <div class="drop__file">
+                <p class="drop__filename" id="fileName"></p>
+                <p class="drop__status" id="uploadStatus" role="status">Uploading…</p>
+                <button class="link-btn" type="button" id="replaceBtn">Replace clip</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="field">
+              <label for="fName">Your name</label>
+              <input id="fName" name="name" type="text" autocomplete="name" required>
+              <p class="field__error" id="fNameErr"></p>
+            </div>
+            <div class="field">
+              <label for="fHandle">Instagram handle</label>
+              <div class="field__prefix"><span aria-hidden="true">@</span><input id="fHandle" name="handle" type="text" autocomplete="off" spellcheck="false" required></div>
+              <p class="field__error" id="fHandleErr"></p>
+            </div>
+            <div class="field field--wide">
+              <label for="fProduct">Which Loop product is in the clip?</label>
+              <div class="select"><select id="fProduct" name="product" required></select></div>
+            </div>
+            <label class="consent field--wide">
+              <input id="fConsent" type="checkbox" required>
+              <span class="consent__box" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="m3.5 8.4 2.9 2.8 6-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span>I filmed this clip, everyone in it agreed, and Loop Studio may show it on its store.</span>
+            </label>
+            <p class="field__error field--wide" id="fConsentErr"></p>
+          </div>
+
+          <button class="btn btn--primary btn--block" id="submitBtn" type="submit">Send clip for review</button>
+        </form>
+      </div>
+
+      <div class="success" id="success" hidden tabindex="-1" aria-labelledby="successTitle">
+        <div class="success__badge" aria-hidden="true">
+          <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="currentColor" stroke-width="5"/><path d="m25 41 10 10 20-22" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2 class="h-display" id="successTitle">Clip sent for review</h2>
+        <p class="success__text" id="successText"></p>
+        <div class="success__actions">
+          <button class="btn btn--primary" type="button" data-goto="queue">Open the approval queue</button>
+          <button class="btn btn--ghost" type="button" id="anotherBtn">Send another clip</button>
+        </div>
+        <div class="confetti" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- 2. Merchant approval queue -->
+    <section class="view view--queue" id="view-queue" role="tabpanel" aria-labelledby="tab-queue" hidden>
+      <div class="queue__head">
+        <div>
+          <p class="eyebrowless">For the merchant</p>
+          <h1 class="h-display">Approval queue</h1>
+        </div>
+        <dl class="counters" aria-live="polite">
+          <div class="counter counter--pending"><dt>Pending</dt><dd id="cPending">0</dd></div>
+          <div class="counter counter--approved"><dt>Approved</dt><dd id="cApproved">0</dd></div>
+          <div class="counter counter--rejected"><dt>Rejected</dt><dd id="cRejected">0</dd></div>
+        </dl>
+        <div class="seg" role="group" aria-label="Queue layout">
+          <button class="seg__btn" type="button" data-mode="stack" aria-pressed="true">Stack</button>
+          <button class="seg__btn" type="button" data-mode="list" aria-pressed="false">List</button>
+        </div>
+      </div>
+
+      <div class="queue__body">
+        <div class="stack-wrap" id="stackWrap">
+          <div class="stack" id="stack" aria-live="polite"></div>
+          <div class="stack-actions" id="stackActions">
+            <button class="round round--reject" type="button" id="rejectBtn" aria-label="Reject clip (left arrow)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+            </button>
+            <p class="stack-hint">Swipe, click, or use <kbd>←</kbd> <kbd>→</kbd></p>
+            <button class="round round--approve" type="button" id="approveBtn" aria-label="Approve clip (right arrow)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5.5 12.5 4.2 4.2 8.8-9.4" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <ul class="qlist" id="qlist" hidden></ul>
+        <div class="empty" id="queueEmpty" hidden>
+          <div class="empty__art" aria-hidden="true"><span></span><span></span><span></span></div>
+          <h2>The queue is clear</h2>
+          <p>New creator clips will show up here.</p>
+          <button class="btn btn--ghost" type="button" data-goto="upload">Submit a clip as a creator</button>
+        </div>
+      </div>
+
+      <!-- Attach to products step -->
+      <div class="attach" id="attach" role="dialog" aria-modal="true" aria-labelledby="attachTitle" hidden>
+        <div class="attach__backdrop"></div>
+        <div class="attach__card">
+          <div class="attach__thumb"><img id="attachPoster" alt=""></div>
+          <h2 id="attachTitle">Tag products in this clip</h2>
+          <p class="attach__text" id="attachText"></p>
+          <div class="chips" id="attachChips" role="group" aria-label="Products"></div>
+          <div class="attach__actions">
+            <button class="btn btn--ghost" type="button" id="attachCancel">Back</button>
+            <button class="btn btn--primary" type="button" id="attachPublish">Publish to storefront</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Storefront wall -->
+    <section class="view view--wall" id="view-wall" role="tabpanel" aria-labelledby="tab-wall" hidden>
+      <div class="wall__head">
+        <p class="eyebrowless">On the storefront</p>
+        <h1 class="h-display" id="wallTitle"></h1>
+        <p class="wall__intro" id="wallIntro"></p>
+      </div>
+      <ul class="wall" id="wall"></ul>
+      <div class="empty" id="wallEmpty" hidden>
+        <div class="empty__art" aria-hidden="true"><span></span><span></span><span></span></div>
+        <h2>No clips on the wall yet</h2>
+        <p>Approve a clip in the queue and it appears here.</p>
+        <button class="btn btn--ghost" type="button" data-goto="queue">Open the approval queue</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Stories viewer -->
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Clip viewer" hidden>
+    <div class="viewer__backdrop" data-close></div>
+    <div class="viewer__stage" id="viewerStage">
+      <div class="viewer__bars" id="viewerBars" aria-hidden="true"></div>
+      <div class="viewer__top">
+        <p class="viewer__who"><span class="avatar" id="viewerAvatar" aria-hidden="true"></span><span><b id="viewerName"></b><span id="viewerHandle"></span></span></p>
+        <button class="viewer__icon" type="button" id="viewerSound" aria-pressed="false" aria-label="Unmute">
+          <svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="m16 9.5 5 5m0-5-5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+          <svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+        </button>
+        <button class="viewer__icon" type="button" id="viewerClose" aria-label="Close viewer" data-close>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <video class="viewer__video" id="viewerVideo" muted playsinline preload="metadata"></video>
+      <button class="viewer__tap viewer__tap--prev" type="button" id="viewerPrev" aria-label="Previous clip"></button>
+      <button class="viewer__tap viewer__tap--next" type="button" id="viewerNext" aria-label="Next clip"></button>
+      <div class="tagcard" id="tagcard"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="data/seed.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

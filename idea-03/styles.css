@@ -1,0 +1,258 @@
+/* ==========================================================================
+   Aureline · Scroll-story sections pack
+   Warm neutral palette, Bodoni Moda (editorial, high contrast) + Instrument Sans.
+   Each section below is a self-contained block, mirroring a Shopify section file.
+   ========================================================================== */
+
+:root {
+  --paper: #efe9e1;
+  --surface: #f7f3ed;
+  --ink: #2b2420;
+  --muted: #85796f;
+  --line: rgba(43, 36, 32, 0.14);
+  --accent: #a88452; /* changed live by the Tweak panel */
+
+  --serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --sans: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --gutter: clamp(18px, 4vw, 56px);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--ink); color: var(--paper); padding: 10px 14px; border-radius: 6px; text-decoration: none; }
+.skip:focus { top: 12px; }
+
+/* ---------- Top bar (inverts over the hero) ---------- */
+.topbar {
+  position: fixed; inset: 0 0 auto 0; z-index: 30;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px var(--gutter); color: var(--paper);
+  transition: color 0.4s, background-color 0.4s;
+}
+.topbar.is-solid { color: var(--ink); background: rgba(239, 233, 225, 0.86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.wordmark { font: 400 26px/1 var(--serif); letter-spacing: 0.02em; text-decoration: none; }
+.topnav { display: flex; align-items: center; gap: 26px; font-size: 14px; }
+.topnav a { text-decoration: none; }
+.topnav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.bag { background: none; border: 1px solid currentColor; border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+.bag span { display: inline-block; min-width: 1ch; }
+
+/* ---------- Fixed section label ---------- */
+.sectionlabel {
+  position: fixed; left: var(--gutter); bottom: 22px; z-index: 25;
+  display: grid; grid-template-columns: auto auto; align-items: baseline; gap: 4px 14px;
+  font-size: 13px; color: var(--ink); mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.sectionlabel.is-light { color: var(--paper); mix-blend-mode: normal; }
+.sectionlabel__num { font-variant-numeric: tabular-nums; }
+.sectionlabel__name { display: inline-block; overflow: hidden; font: italic 400 17px/1.2 var(--serif); }
+.sectionlabel__name span, .sectionlabel__num span { display: inline-block; }
+.sectionlabel__bar { grid-column: 1 / -1; height: 1px; width: 160px; background: currentColor; opacity: 0.25; overflow: hidden; position: relative; }
+.sectionlabel__bar span { position: absolute; inset: 0; background: currentColor; transform-origin: 0 50%; transform: scaleX(0); opacity: 1; }
+
+/* ==========================================================================
+   01 · Hero text-mask reveal
+   ========================================================================== */
+.hero { position: relative; height: 100svh; min-height: 620px; overflow: hidden; color: var(--paper); }
+.hero__media { position: absolute; inset: -6% 0 -14% 0; }
+.hero__media img { width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 40%; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30, 22, 18, 0.25) 0%, rgba(30, 22, 18, 0.05) 40%, rgba(30, 22, 18, 0.62) 100%); pointer-events: none; }
+.hero__content { position: absolute; z-index: 2; left: var(--gutter); right: var(--gutter); bottom: clamp(70px, 12vh, 120px); }
+.hero__title { margin: 0; font: 400 clamp(50px, 9.4vw, 156px)/0.94 var(--serif); letter-spacing: -0.025em; }
+.hero__line { display: block; overflow: hidden; padding-bottom: 0.06em; }
+.hero__line > span { display: inline-block; }
+.hero__line:nth-child(2) { padding-left: 1.1em; font-style: italic; }
+.hero__foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-top: 32px; }
+.hero__body { margin: 0; max-width: 40ch; font-size: 16px; opacity: 0.9; }
+.hero__cue { display: inline-flex; align-items: center; gap: 12px; font-size: 13px; }
+.hero__cue i { position: relative; display: block; width: 1px; height: 46px; background: rgba(239, 233, 225, 0.35); overflow: hidden; }
+.hero__cue i::after { content: ""; position: absolute; inset: 0; background: var(--paper); animation: cue 2.2s cubic-bezier(0.6, 0, 0.3, 1) infinite; transform-origin: 0 0; }
+@keyframes cue { 0% { transform: translateY(-100%); } 60%, 100% { transform: translateY(100%); } }
+
+/* ==========================================================================
+   02 · Pinned product story
+   ========================================================================== */
+.story { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 0 clamp(24px, 5vw, 80px); padding: 0 var(--gutter); }
+.story__media { height: 100vh; display: flex; align-items: center; gap: 28px; z-index: 2; }
+.story__frame { position: relative; flex: 1; height: min(78vh, 760px); border-radius: 220px 220px 18px 18px; overflow: hidden; background: #d9cfc3; }
+.story__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: inset(100% 0% 0% 0%); }
+.story__img.is-first { clip-path: inset(0% 0% 0% 0%); }
+.story__progress { display: grid; justify-items: center; gap: 12px; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--muted); }
+.story__track { position: relative; width: 1px; height: 38vh; background: var(--line); }
+.story__fill { position: absolute; inset: 0; background: var(--accent); transform-origin: 50% 0; transform: scaleY(0); }
+.story__count b { display: block; color: var(--ink); font: 400 20px/1 var(--serif); }
+.story__steps { padding: 18vh 0 22vh; }
+.story__heading { margin: 0 0 8vh; font: 400 clamp(36px, 4.4vw, 64px)/1 var(--serif); letter-spacing: -0.02em; max-width: 12ch; }
+.step { min-height: 72vh; display: flex; flex-direction: column; justify-content: center; max-width: 34ch; opacity: 0.25; }
+.step__title { margin: 0 0 14px; font: 400 clamp(30px, 3.2vw, 46px)/1.05 var(--serif); }
+.step__title em { display: block; margin-bottom: 10px; font: 500 13px/1 var(--sans); font-style: normal; color: var(--accent); }
+.step__body { margin: 0; color: var(--muted); font-size: 17px; }
+
+/* ==========================================================================
+   03 · Horizontal collection rail
+   ========================================================================== */
+.rail { position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; gap: 4vh; background: var(--surface); }
+.rail__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: 0 var(--gutter); }
+.rail__heading { margin: 0; font: 400 clamp(40px, 5.4vw, 84px)/0.95 var(--serif); letter-spacing: -0.02em; }
+.rail__heading em { color: var(--accent); }
+.rail__intro { margin: 0; max-width: 30ch; color: var(--muted); font-size: 15px; }
+.rail__track { list-style: none; margin: 0; display: flex; gap: clamp(18px, 3vw, 44px); padding: 0 var(--gutter); width: max-content; will-change: transform; }
+.pcard { width: clamp(230px, 24vw, 360px); flex: none; transform-origin: 50% 60%; }
+.pcard__img { aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: #ddd3c7; }
+.pcard__img img { width: 100%; height: 100%; object-fit: cover; }
+.pcard__meta { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; margin-top: 14px; }
+.pcard__title { margin: 0; font: 400 clamp(22px, 2vw, 28px)/1.1 var(--serif); }
+.pcard__price { font-size: 15px; font-variant-numeric: tabular-nums; }
+.pcard__kind { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 13.5px; }
+.pcard__notes { grid-column: 1 / -1; margin: 6px 0 0; font: italic 400 15px/1.4 var(--serif); }
+.pcard__add { grid-column: 1 / -1; justify-self: start; margin-top: 10px; background: none; border: 0; border-bottom: 1px solid currentColor; padding: 2px 0; font-size: 14px; }
+.pcard__add:hover { color: var(--accent); }
+.pcard__add.is-added { color: var(--accent); border-color: transparent; }
+
+/* ==========================================================================
+   04 · Marquee proof bar
+   ========================================================================== */
+.proof { padding: 14vh 0; overflow: hidden; border-block: 1px solid var(--line); }
+.marquee { display: flex; overflow: hidden; white-space: nowrap; }
+.marquee__track { display: flex; flex: none; will-change: transform; }
+.marquee__item { display: inline-flex; align-items: center; flex: none; }
+.marquee--press .marquee__item { font: italic 400 clamp(40px, 6.4vw, 104px)/1.1 var(--serif); padding-right: 0.5em; }
+.marquee--press .marquee__item::after { content: ""; display: inline-block; width: 0.22em; height: 0.22em; margin-left: 0.5em; border-radius: 50%; background: var(--accent); }
+.marquee--reviews { margin-top: 4vh; }
+.marquee--reviews .marquee__item { font-size: clamp(15px, 1.4vw, 19px); color: var(--muted); padding-right: 3.5em; }
+
+/* ==========================================================================
+   05 · Split-image reveal
+   ========================================================================== */
+.split { position: relative; height: 100vh; overflow: hidden; background: var(--ink); color: var(--paper); }
+.split__statement { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 30px; padding: var(--gutter); text-align: center; }
+.split__statement h2 { margin: 0; max-width: 14ch; font: 400 clamp(40px, 6.4vw, 104px)/1 var(--serif); letter-spacing: -0.02em; }
+.split__points { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin: 0; padding: 0; font-size: 15px; color: rgba(239, 233, 225, 0.75); }
+.split__points li::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 10px; border-radius: 50%; background: var(--accent); vertical-align: 2px; }
+.split__half { position: absolute; inset: 0; will-change: transform; }
+.split__half img { width: 100%; height: 100%; object-fit: cover; }
+.split__half--l { clip-path: inset(0 50% 0 0); }
+.split__half--r { clip-path: inset(0 0 0 50%); }
+.split__seam { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--accent); transform-origin: 50% 0; }
+
+/* ==========================================================================
+   06 · Sticky stacking cards
+   ========================================================================== */
+.ingredients { padding: 16vh var(--gutter) 10vh; }
+.ingredients__heading { margin: 0 auto 8vh; max-width: 18ch; text-align: center; font: 400 clamp(36px, 4.6vw, 70px)/1 var(--serif); letter-spacing: -0.02em; }
+.icards { max-width: 1120px; margin: 0 auto; }
+.icard {
+  --top: calc(14vh + var(--i) * var(--offset, 26px));
+  position: sticky; top: var(--top);
+  height: min(70vh, 600px); margin-bottom: 8vh;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  border-radius: 28px; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line);
+  box-shadow: 0 -20px 50px -30px rgba(43, 36, 32, 0.35);
+  transform-origin: 50% 0;
+}
+.icard:last-child { margin-bottom: 0; }
+.icard__img { position: relative; overflow: hidden; }
+.icard__img img { width: 100%; height: 100%; object-fit: cover; }
+.icard__body { display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(24px, 4vw, 56px); }
+.icard__origin { margin: 0 0 auto; color: var(--muted); font-size: 14px; }
+.icard__name { margin: 0 0 18px; font: 400 clamp(40px, 5vw, 76px)/0.95 var(--serif); letter-spacing: -0.02em; }
+.icard__text { margin: 0; max-width: 34ch; color: var(--muted); }
+.icard__shade { position: absolute; inset: 0; background: var(--ink); opacity: 0; pointer-events: none; z-index: 3; }
+
+/* ---------- Footer ---------- */
+.foot { padding: 18vh var(--gutter) 90px; text-align: center; background: var(--ink); color: var(--paper); }
+.foot__big { margin: 0 0 30px; font: italic 400 clamp(48px, 8vw, 128px)/1 var(--serif); }
+.foot__cta { display: inline-block; padding: 14px 26px; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; font-weight: 500; }
+.foot__small { margin: 70px 0 0; font-size: 12.5px; opacity: 0.55; }
+
+/* ---------- Tweak panel ---------- */
+.tweak { position: fixed; right: var(--gutter); bottom: 20px; z-index: 40; }
+.tweak__btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px 10px 12px;
+  border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  font-size: 14px; font-weight: 500; box-shadow: 0 10px 30px -12px rgba(43, 36, 32, 0.4);
+}
+.tweak__btn svg { width: 20px; height: 20px; }
+.tweak__panel {
+  position: absolute; right: 0; bottom: calc(100% + 10px); width: 280px;
+  padding: 18px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line);
+  box-shadow: 0 24px 60px -20px rgba(43, 36, 32, 0.45);
+  display: grid; gap: 18px; transform-origin: 100% 100%;
+}
+.tweak__panel[hidden] { display: none; }
+.tweak__group { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 13.5px; }
+.tweak__group legend, .tweak__group > label { padding: 0; margin-bottom: 10px; display: flex; justify-content: space-between; color: var(--muted); }
+.tweak__group legend { margin-bottom: 10px; }
+.tweak__group output { color: var(--ink); font-variant-numeric: tabular-nums; }
+.tweak__swatches { display: flex; gap: 10px; }
+.tweak__swatch { position: relative; width: 34px; height: 34px; }
+.tweak__swatch input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+.tweak__swatch span { display: block; width: 100%; height: 100%; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px transparent; transition: box-shadow 0.2s; }
+.tweak__swatch input:checked + span { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--ink); }
+.tweak__swatch input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 4px; }
+.tweak input[type="range"] { width: 100%; accent-color: var(--accent); }
+.tweak__switch { position: relative; display: flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer; }
+.tweak__switch input { position: absolute; opacity: 0; width: 40px; height: 22px; margin: 0; cursor: pointer; }
+.tweak__track { position: relative; width: 40px; height: 22px; border-radius: 11px; background: var(--line); transition: background-color 0.2s; flex: none; }
+.tweak__track span { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25); transition: transform 0.25s; }
+.tweak__switch input:checked + .tweak__track { background: var(--accent); }
+.tweak__switch input:checked + .tweak__track span { transform: translateX(18px); }
+.tweak__switch input:focus-visible + .tweak__track { outline: 2px solid var(--ink); outline-offset: 2px; }
+.tweak__note { margin: 0; font-size: 12px; color: var(--muted); }
+
+/* ==========================================================================
+   Reduced motion layout (system setting or Tweak toggle)
+   No pins, no scrubbing: sections fall back to calm, static layouts.
+   ========================================================================== */
+.is-reduced .story__media { position: sticky; top: 0; }
+.is-reduced .step { opacity: 1; }
+.is-reduced .rail { height: auto; padding: 14vh 0; }
+.is-reduced .rail__viewport { overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); padding-bottom: 16px; }
+.is-reduced .pcard { scroll-snap-align: start; }
+.is-reduced .split__half, .is-reduced .split__seam { display: none; }
+.is-reduced .split { height: auto; min-height: 70vh; }
+.is-reduced .split__statement { position: relative; min-height: 70vh; }
+.is-reduced .hero__cue i::after { animation: none; }
+
+/* ==========================================================================
+   Tablet / mobile
+   ========================================================================== */
+@media (max-width: 900px) {
+  .story { grid-template-columns: 1fr; padding: 0; }
+  .story__media { position: relative; height: 56svh; padding: 64px 18px 14px; background: var(--paper); gap: 14px; }
+  .story__media::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 48px; background: linear-gradient(var(--paper), rgba(239, 233, 225, 0)); pointer-events: none; }
+  .story__frame { height: 100%; border-radius: 140px 140px 14px 14px; }
+  .story__track { height: 24svh; }
+  .story__steps { padding: 4vh 22px 30vh; }
+  .story__heading { margin-bottom: 4vh; }
+  .step { min-height: 62svh; justify-content: flex-start; padding-top: 6vh; }
+  .rail__head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .icard { grid-template-columns: 1fr; grid-template-rows: 45% 1fr; height: min(74svh, 640px); --top: calc(10vh + var(--i) * 14px); }
+  .icard__body { justify-content: flex-start; padding: 22px; }
+  .icard__origin { margin-bottom: 10px; }
+  .icard__name { margin-bottom: 10px; }
+}
+@media (max-width: 600px) {
+  .topnav a { display: none; }
+  .hero__foot { flex-direction: column; align-items: flex-start; }
+  .hero__cue { display: none; }
+  .sectionlabel { bottom: 18px; font-size: 12px; }
+  .sectionlabel__name { font-size: 15px; }
+  .sectionlabel__bar { width: 110px; }
+  .pcard { width: 72vw; }
+  .tweak { bottom: 14px; }
+  .tweak__panel { width: min(280px, calc(100vw - 36px)); }
+}

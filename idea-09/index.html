@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Meridian ANC · Northline Audio</title>
+  <meta name="description" content="Prototype: Smart Buy Bar, a sticky add-to-cart that morphs out of the buy box with delivery countdown and section nav.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e1116'/%3E%3Cpath d='M8 23V9l16 14V9' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='9' r='2.6' fill='%2300c2a8'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#buybox">Skip to buy box</a>
+  <header class="topbar">
+    <a class="wordmark" href="#">Northline</a>
+    <nav class="topnav" aria-label="Main"><a href="#" aria-current="page">Headphones</a><a href="#">Speakers</a><a href="#">Support</a></nav>
+    <button class="cartbtn" id="cartBtn" type="button" aria-label="Cart, 0 items">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5h2.2l2 10.5h10.3L20 8H6.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/><circle cx="9" cy="19" r="1.3" fill="currentColor"/><circle cx="17" cy="19" r="1.3" fill="currentColor"/></svg>
+      <span id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="gallery" id="gallery" aria-label="Product images"></div>
+
+      <div class="buybox" id="buybox" aria-labelledby="pTitle">
+        <p class="buybox__rating" id="pRating"></p>
+        <h1 id="pTitle"></h1>
+        <p class="buybox__tag" id="pTag"></p>
+        <p class="buybox__price"><b id="pPrice"></b><s id="pCompare"></s><span class="save" id="pSave"></span></p>
+        <ul class="chips" id="pHighlights"></ul>
+
+        <fieldset class="colors">
+          <legend>Colour · <b id="pColorName"></b></legend>
+          <div class="colors__row" id="pColors"></div>
+        </fieldset>
+
+        <div class="eta" id="eta">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7" cy="17.5" r="1.7" fill="currentColor"/><circle cx="17" cy="17.5" r="1.7" fill="currentColor"/></svg>
+          <p id="etaText"></p>
+        </div>
+        <p class="stock" id="stock"></p>
+
+        <div class="buyrow">
+          <div class="qty" role="group" aria-label="Quantity">
+            <button type="button" data-q="-1" aria-label="Decrease quantity">−</button><output id="qty">1</output><button type="button" data-q="1" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="atc" id="atcMain" type="button" data-flip-id="atc"><span>Add to cart</span></button>
+        </div>
+        <p class="trust">Free 60-day returns · 2-year warranty</p>
+      </div>
+    </section>
+
+    <div class="content" id="content"></div>
+    <footer class="foot">Northline Audio is an invented brand used to demo the Smart Buy Bar. Photos from Pexels.</footer>
+  </main>
+
+  <!-- The Smart Buy Bar -->
+  <div class="bar" id="bar" aria-hidden="true">
+    <div class="bar__progress"><span id="barProgress"></span></div>
+    <div class="bar__inner">
+      <div class="bar__product">
+        <img id="barImg" alt="">
+        <div class="bar__meta"><b id="barTitle"></b><span id="barPrice"></span></div>
+      </div>
+      <nav class="bar__nav" id="barNav" aria-label="Page sections"><span class="bar__navpill" aria-hidden="true"></span></nav>
+      <div class="bar__colors" id="barColors" role="radiogroup" aria-label="Colour"></div>
+      <p class="bar__eta" id="barEta"></p>
+      <button class="atc atc--bar" id="atcBar" type="button" data-flip-id="atc" tabindex="-1"><span>Add to cart</span></button>
+    </div>
+  </div>
+
+  <!-- Merchant toggles -->
+  <div class="merchant">
+    <button class="merchant__btn" id="merchantBtn" type="button" aria-expanded="false" aria-controls="merchantPanel">Merchant settings</button>
+    <div class="merchant__panel" id="merchantPanel" hidden>
+      <label><input type="checkbox" id="optNav" checked> Section navigation</label>
+      <label><input type="checkbox" id="optEta" checked> Delivery countdown</label>
+      <label><input type="checkbox" id="optColors" checked> Colour picker in bar</label>
+      <label><input type="checkbox" id="optProgress" checked> Reading progress line</label>
+      <label>Bar position
+        <select id="optPos"><option value="bottom">Bottom</option><option value="top">Top</option></select>
+      </label>
+    </div>
+  </div>
+
+  <div class="flyer-layer" aria-hidden="true"></div>
+  <p class="visually-hidden" id="liveRegion" aria-live="polite"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+  <script src="data/product.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

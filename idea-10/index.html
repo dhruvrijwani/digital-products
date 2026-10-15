@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tasting Flight No. 3 · Cacao &amp; Co</title>
+  <meta name="description" content="Prototype: Gift Mode, a one-tap gift flow with wrapping, a live note card, hidden prices and scheduled delivery.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='5' y='11' width='22' height='16' rx='2' fill='%234a2b22'/%3E%3Cpath d='M16 11v16M5 17h22' stroke='%23e2b04a' stroke-width='3'/%3E%3Cpath d='M16 11c-3-5-9-4-7-1s7 1 7 1c0 0 5 2 7-1s-4-4-7 1z' fill='%23e2b04a'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Caveat:wght@500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#buy">Skip to product</a>
+  <header class="topbar">
+    <a class="wordmark" href="#">Cacao <i>&amp;</i> Co</a>
+    <nav class="topnav" aria-label="Main"><a href="#">Bars</a><a href="#" aria-current="page">Flights</a><a href="#">Gifts</a></nav>
+    <button class="cartbtn" id="cartBtn" type="button" aria-label="Cart, 0 items">Cart <span id="cartCount">0</span></button>
+  </header>
+
+  <main class="pdp">
+    <section class="media" aria-label="Product images">
+      <div class="hero" id="hero">
+        <img class="hero__img" id="heroImg" alt="">
+        <!-- Wrapping overlay: paper + ribbon + tag, animated in when gift mode is on -->
+        <svg class="wrap" id="wrap" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <pattern id="pat-dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="2.2" fill="rgba(255,255,255,0.22)"/></pattern>
+            <pattern id="pat-lines" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="1.4" height="16" fill="rgba(214,178,94,0.35)"/></pattern>
+            <pattern id="pat-leaves" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M12 30c6-14 18-16 22-16-2 10-10 20-22 16zM12 30l14-10" fill="none" stroke="rgba(122,46,46,0.28)" stroke-width="1.6"/></pattern>
+            <filter id="bowShade" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.35"/></filter>
+            <linearGradient id="fold" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity="0.18"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.08"/><stop offset="1" stop-color="#000" stop-opacity="0.18"/></linearGradient>
+          </defs>
+          <g id="paperL"><rect x="0" y="0" width="201" height="500" id="paperLfill"/><rect x="0" y="0" width="201" height="500" id="paperLpat"/></g>
+          <g id="paperR"><rect x="199" y="0" width="201" height="500" id="paperRfill"/><rect x="199" y="0" width="201" height="500" id="paperRpat"/></g>
+          <rect x="0" y="0" width="400" height="500" fill="url(#fold)" id="foldShade"/>
+          <rect id="ribV" x="182" y="0" width="36" height="500"/>
+          <rect id="ribH" x="0" y="232" width="400" height="36"/>
+          <g id="bow" transform="translate(200 250)">
+            <path id="bowL" d="M0 0C-26-56-104-58-96-8C-90 22-30 18 0 0Z"/>
+            <path id="bowR" d="M0 0C26-56 104-58 96-8C90 22 30 18 0 0Z"/>
+            <path id="tailL" d="M-6 6-34 70-20 66-12 80Z"/>
+            <path id="tailR" d="M6 6 34 70 20 66 12 80Z"/>
+            <circle id="knot" r="14"/>
+          </g>
+          <g id="tag" transform="translate(262 300) rotate(10)">
+            <path d="M0 0h96v58H0l-16-29z" fill="#fbf6ec"/>
+            <circle cx="-4" cy="29" r="4" fill="#d9cbb3"/>
+            <text id="tagText" x="44" y="36" text-anchor="middle" font-family="Caveat, cursive" font-size="26" fill="#3a2a22">For you</text>
+          </g>
+        </svg>
+        <span class="hero__badge" id="heroBadge">Gift wrapped</span>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+    </section>
+
+    <section class="buy" id="buy" aria-labelledby="pTitle">
+      <p class="buy__sub" id="pSub"></p>
+      <h1 id="pTitle"></h1>
+      <p class="buy__price"><span id="pPrice"></span> <span class="buy__gift" id="pGiftFee"></span></p>
+      <p class="buy__details" id="pDetails"></p>
+
+      <!-- Gift mode toggle -->
+      <button class="giftswitch" id="giftSwitch" type="button" role="switch" aria-checked="false">
+        <span class="giftswitch__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M12 9v11M12 9c-1.5-3-5-4-5-1.5S10.5 9 12 9c1.5 0 5 1 5-1.5S13.5 6 12 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="giftswitch__text"><b>This is a gift</b><span>Wrap it, add a note, hide the price</span></span>
+        <span class="giftswitch__track" aria-hidden="true"><span></span></span>
+      </button>
+
+      <div class="giftpanel" id="giftPanel" hidden>
+        <fieldset class="g">
+          <legend>Wrapping</legend>
+          <div class="wraps" id="wraps" role="radiogroup" aria-label="Wrapping"></div>
+        </fieldset>
+
+        <fieldset class="g">
+          <legend>Gift note</legend>
+          <div class="occ" id="occasions" role="group" aria-label="Start from a prompt"></div>
+          <div class="note">
+            <div class="card" id="card" aria-hidden="true">
+              <span class="card__to" id="cardTo">To someone lovely,</span>
+              <p class="card__msg" id="cardMsg"></p>
+              <span class="card__from" id="cardFrom"></span>
+            </div>
+            <div class="note__fields">
+              <div class="row2">
+                <label class="f"><span>To</span><input id="toName" type="text" maxlength="24" placeholder="Maya" autocomplete="off"></label>
+                <label class="f"><span>From</span><input id="fromName" type="text" maxlength="24" placeholder="Sam" autocomplete="off"></label>
+              </div>
+              <label class="f"><span>Message <em id="noteCount">0/160</em></span><textarea id="noteMsg" rows="3" maxlength="160"></textarea></label>
+              <div class="notefont" id="noteFonts" role="radiogroup" aria-label="Note style"></div>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="g">
+          <legend>Delivery</legend>
+          <label class="check"><input type="checkbox" id="hidePrices"> <span>Hide prices on the packing slip</span></label>
+          <div class="sched">
+            <label class="check"><input type="checkbox" id="schedule"> <span>Arrive on a specific day</span></label>
+            <div class="days" id="days" hidden role="radiogroup" aria-label="Delivery day"></div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="summary" id="summary" aria-live="polite"></div>
+      <button class="atc" id="atc" type="button"><span>Add to cart</span></button>
+      <p class="buy__trust">Ships in insulated packaging · Free delivery over $60</p>
+    </section>
+  </main>
+
+  <div class="seal" id="seal" aria-hidden="true">
+    <div class="seal__env">
+      <div class="seal__card" id="sealCard"></div>
+      <div class="seal__back"></div>
+      <div class="seal__flap" id="sealFlap"></div>
+      <div class="seal__wax" id="sealWax">C&amp;C</div>
+    </div>
+  </div>
+
+  <p class="visually-hidden" id="liveRegion" aria-live="polite"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="data/gift.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

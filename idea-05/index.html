@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>No. 4 Straight Jean · Standard Issue</title>
+  <meta name="description" content="Prototype: product page with a fit finder that mines reviews for sizing signal.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141414'/%3E%3Cpath d='M9 10h14M9 16h14M9 22h8' stroke='%23e7e3dc' stroke-width='3'/%3E%3Crect x='20' y='20' width='4' height='4' fill='%23e8452c'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to product</a>
+
+  <header class="topbar">
+    <a class="wordmark" href="#" aria-label="Standard Issue home">Standard<span>Issue</span></a>
+    <nav class="topnav" aria-label="Main">
+      <a href="#" aria-current="page">Denim</a>
+      <a href="#">Shirts</a>
+      <a href="#">Basics</a>
+    </nav>
+    <button class="cart" id="cartBtn" type="button" aria-label="Cart, 0 items">Cart <span id="cartCount">0</span></button>
+  </header>
+
+  <main id="main" class="pdp">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="#">Denim</a><span aria-hidden="true">/</span><a href="#">Straight</a><span aria-hidden="true">/</span><span aria-current="page" id="crumbTitle"></span></nav>
+
+    <div class="pdp__grid">
+      <section class="gallery" aria-label="Product images" id="gallery"></section>
+
+      <section class="buy" aria-labelledby="productTitle">
+        <div class="buy__inner">
+          <p class="buy__sub" id="productSub"></p>
+          <h1 class="buy__title" id="productTitle"></h1>
+          <div class="buy__meta">
+            <span class="buy__price" id="productPrice"></span>
+            <a class="buy__rating" href="#reviews" id="productRating"></a>
+          </div>
+
+          <fieldset class="opt">
+            <legend>Colour: <b id="colorName"></b></legend>
+            <div class="swatches" id="swatches"></div>
+          </fieldset>
+
+          <fieldset class="opt" id="sizeField">
+            <legend>Size <span class="opt__hint" id="sizeHint">Pick a size</span></legend>
+            <div class="sizes" id="sizes"></div>
+            <button class="finder-btn" id="finderBtn" type="button" aria-haspopup="dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="8" width="19" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6 8v3M9.5 8v4.5M13 8v3M16.5 8v4.5" stroke="currentColor" stroke-width="1.7"/></svg>
+              <span>Find my size</span>
+              <span class="finder-btn__note">Uses 40 reviews</span>
+            </button>
+          </fieldset>
+
+          <div class="buy__actions">
+            <button class="atc" id="atcBtn" type="button"><span>Add to cart</span></button>
+            <p class="atc__msg" id="atcMsg" role="status"></p>
+          </div>
+
+          <p class="buy__desc" id="productDesc"></p>
+          <details class="acc" open>
+            <summary>Details</summary>
+            <ul id="productDetails"></ul>
+          </details>
+          <details class="acc">
+            <summary>Size chart (cm)</summary>
+            <div class="chart-wrap"><table class="chart" id="sizeChart"></table></div>
+          </details>
+        </div>
+      </section>
+    </div>
+
+    <section class="reviews" id="reviews" aria-labelledby="reviewsTitle">
+      <div class="reviews__head">
+        <h2 id="reviewsTitle">How it fits, from 40 reviews</h2>
+        <div class="fitbar fitbar--static" id="pdpFitbar"></div>
+      </div>
+      <ul class="reviews__list" id="reviewsList"></ul>
+    </section>
+
+    <footer class="foot">Standard Issue is an invented brand for a prototype. Photos from Pexels. Reviews are mock data.</footer>
+  </main>
+
+  <!-- Fit finder drawer (bottom sheet on mobile) -->
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
+    <div class="drawer__backdrop" data-close></div>
+    <div class="drawer__panel" id="drawerPanel">
+      <span class="drawer__handle" aria-hidden="true"></span>
+      <header class="drawer__head">
+        <h2 id="drawerTitle">Find my size</h2>
+        <div class="dots"><span class="dots__fill" aria-hidden="true"></span><ol class="dots__list" aria-label="Progress"><li class="dot is-on" aria-current="step"><span class="visually-hidden">Question 1</span></li><li class="dot"><span class="visually-hidden">Question 2</span></li><li class="dot"><span class="visually-hidden">Result</span></li></ol></div>
+        <button class="drawer__close" type="button" data-close aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+        </button>
+      </header>
+
+      <div class="drawer__body" id="drawerBody">
+        <!-- Step 1 -->
+        <section class="step" id="step1" aria-labelledby="s1Title">
+          <p class="step__count">Question 1 of 2</p>
+          <h3 class="step__title" id="s1Title">How tall are you, and what size do you usually wear?</h3>
+          <div class="height">
+            <div class="height__readout" aria-hidden="true"><b id="heightCm">175</b><span>cm</span><em id="heightFt">5 ft 9 in</em></div>
+            <div class="ruler" aria-hidden="true"><div class="ruler__track" id="rulerTrack"></div><span class="ruler__needle"></span></div>
+            <label class="visually-hidden" for="heightRange">Height in centimetres</label>
+            <input class="height__range" id="heightRange" type="range" min="150" max="205" step="1" value="175">
+          </div>
+          <fieldset class="usual">
+            <legend>Usual size in other brands</legend>
+            <div class="usual__pills" id="usualPills"></div>
+          </fieldset>
+          <button class="btn btn--primary" id="toStep2" type="button" aria-disabled="true">Next question</button>
+        </section>
+
+        <!-- Step 2 -->
+        <section class="step" id="step2" aria-labelledby="s2Title" hidden>
+          <p class="step__count">Question 2 of 2</p>
+          <h3 class="step__title" id="s2Title">How do you like your jeans to fit?</h3>
+          <div class="fitcards" id="fitCards" role="radiogroup" aria-labelledby="s2Title"></div>
+          <button class="btn btn--ghost" id="backTo1" type="button">Back</button>
+        </section>
+
+        <!-- Analysing -->
+        <section class="step step--analyse" id="stepAnalyse" hidden aria-live="polite">
+          <div class="scan" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <p class="analyse__line">Reading <b id="analyseCount">0</b> reviews from people like you</p>
+        </section>
+
+        <!-- Result -->
+        <section class="step step--result" id="stepResult" hidden aria-labelledby="resultTitle">
+          <p class="step__count" id="resultTitle">Your size in the No. 4</p>
+          <div class="result">
+            <div class="result__letter" id="resultLetter" aria-live="polite"><span class="result__old" id="resultOld"></span><span class="result__new" id="resultNew"></span></div>
+            <div class="result__side">
+              <div class="meter" aria-hidden="true"><span class="meter__fill" id="meterFill"></span></div>
+              <p class="meter__label"><b id="confidence">0</b>% confidence</p>
+              <p class="result__reason" id="resultReason"></p>
+            </div>
+          </div>
+
+          <div class="signal">
+            <h4 class="signal__title" id="signalTitle">What reviewers your height said</h4>
+            <div class="fitbar" id="drawerFitbar"></div>
+          </div>
+
+          <ul class="matches" id="matches"></ul>
+
+          <div class="result__actions">
+            <button class="btn btn--primary" id="selectSize" type="button">Select size</button>
+            <button class="link" id="retake" type="button">Retake</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <p class="visually-hidden" id="liveRegion" aria-live="polite"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+  <script src="data/product.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

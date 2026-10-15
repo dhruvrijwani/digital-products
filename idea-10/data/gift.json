@@ -1,0 +1,30 @@
+{
+  "shop": { "name": "Cacao & Co", "currency": "$" },
+  "product": {
+    "title": "Tasting Flight No. 3",
+    "subtitle": "Six single-origin bars, 70 g each",
+    "price": 54,
+    "images": ["assets/img/choc-1.jpg", "assets/img/choc-2.jpg", "assets/img/choc-3.jpg", "assets/img/choc-4.jpg"],
+    "details": "Ecuador 72%, Madagascar 68%, Peru 80%, Ghana milk 45%, Vietnam 74%, and a white bar with toasted rice."
+  },
+  "gift": {
+    "wraps": [
+      { "id": "kraft", "label": "Kraft & twine", "price": 0, "paper": "#c9a274", "pattern": "dots", "ribbon": "#f3ead8" },
+      { "id": "noir", "label": "Noir & gold", "price": 6, "paper": "#1d1a1a", "pattern": "lines", "ribbon": "#d6b25e" },
+      { "id": "blush", "label": "Blush botanical", "price": 6, "paper": "#e9c4bd", "pattern": "leaves", "ribbon": "#7a2e2e" }
+    ],
+    "noteMax": 160,
+    "noteFonts": [
+      { "id": "hand", "label": "Handwritten", "family": "Caveat" },
+      { "id": "print", "label": "Printed", "family": "Fraunces" }
+    ],
+    "occasions": [
+      { "id": "birthday", "label": "Birthday", "prompt": "Happy birthday! Another year sweeter. Love," },
+      { "id": "thanks", "label": "Thank you", "prompt": "A small thank you for everything you do." },
+      { "id": "missyou", "label": "Thinking of you", "prompt": "Thinking of you today. Enjoy these slowly." },
+      { "id": "blank", "label": "No prompt", "prompt": "" }
+    ],
+    "hidePricesDefault": true,
+    "scheduleDaysOut": 21
+  }
+}

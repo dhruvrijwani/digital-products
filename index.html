@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shopify Prototype Lab</title>
+  <meta name="description" content="Five interactive Shopify digital-product prototypes.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314161a'/%3E%3Cpath d='M9 22V10l7 6 7-6v12' fill='none' stroke='%23f2f1ec' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap">
+  <style>
+    :root {
+      --bg: #14161a;
+      --panel: #1b1e23;
+      --line: rgba(242, 241, 236, 0.1);
+      --ink: #f2f1ec;
+      --muted: #9a9ca3;
+      --font: "Familjen Grotesk", "Segoe UI", system-ui, sans-serif;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink);
+      font: 400 16px/1.5 var(--font); -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 8px; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: clamp(40px, 8vw, 96px) clamp(16px, 4vw, 40px) 64px; }
+    header { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; margin-bottom: clamp(36px, 6vw, 64px); }
+    h1 { margin: 0; font-weight: 600; font-size: clamp(44px, 8vw, 96px); line-height: 0.92; letter-spacing: -0.045em; }
+    h1 span { display: block; color: var(--muted); font-weight: 400; }
+    .lede { margin: 0; max-width: 34ch; color: var(--muted); font-size: 15px; }
+    .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+    .grid li:nth-child(-n+2) { grid-column: span 3; }
+    .grid li:nth-child(n+3) { grid-column: span 2; }
+    .card {
+      position: relative; display: flex; flex-direction: column; height: 100%; min-height: 280px;
+      padding: 22px; border-radius: 18px; text-decoration: none;
+      background: var(--panel); border: 1px solid var(--line);
+      overflow: hidden; isolation: isolate;
+    }
+    /* Hover transitions switch on after the GSAP entrance so they never fight it */
+    .is-ready .card { transition: transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.35s, box-shadow 0.35s; }
+    .card:hover, .card:focus-visible { transform: translateY(-6px); border-color: color-mix(in srgb, var(--a) 60%, transparent); box-shadow: 0 24px 50px -20px color-mix(in srgb, var(--a) 45%, transparent); }
+    .card:focus-visible { outline-color: var(--a); }
+    .num { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .swatch { position: absolute; right: 22px; top: 22px; display: flex; }
+    .swatch i { width: 18px; height: 18px; border-radius: 50%; margin-left: -5px; border: 2px solid var(--panel); }
+    .card h2 { margin: auto 0 8px; font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.05; letter-spacing: -0.025em; }
+    .brand { display: block; margin-bottom: 6px; font-size: 13px; color: var(--muted); }
+    .card p { margin: 0 0 22px; color: #c9cacd; font-size: 15px; max-width: 42ch; }
+    .open { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px; }
+    .open b { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--a); color: var(--on, #14161a); transition: transform 0.35s cubic-bezier(.2,.8,.2,1); }
+    .open svg { width: 14px; height: 14px; }
+    .card:hover .open b { transform: translateX(4px); }
+    .glow { position: absolute; z-index: -1; right: -30%; bottom: -60%; width: 80%; aspect-ratio: 1; border-radius: 50%; background: var(--a); opacity: 0.09; filter: blur(50px); transition: opacity 0.35s; }
+    .card:hover .glow { opacity: 0.2; }
+    footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+    code { color: var(--ink); }
+    .round2 { margin-top: clamp(56px, 8vw, 96px); }
+    .round2__head { display: grid; grid-template-columns: 1fr auto; gap: 16px 24px; align-items: end; margin-bottom: 24px; }
+    .round2__head h2 { margin: 0; font-weight: 600; font-size: clamp(30px, 4.6vw, 52px); line-height: 1; letter-spacing: -0.04em; }
+    .round2__head p { margin: 0; max-width: 40ch; color: var(--muted); font-size: 15px; }
+    .grid2 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+    .grid2 li:nth-child(-n+3) { grid-column: span 2; }
+    .grid2 li:nth-child(n+4) { grid-column: span 3; }
+    .grid2 li.wide { grid-column: 1 / -1; }
+    .grid2 li.wide .card { min-height: 240px; }
+    .grid2 li.wide p { max-width: 70ch; }
+    .grid2 .card { min-height: 300px; }
+    .grid2 .card h2 { margin-top: 14px; }
+    .grid2 .card .pain { margin-top: auto; }
+    .pain { display: block; margin: 0 0 14px; padding: 10px 12px; border-radius: 10px; background: rgba(255,255,255,0.04); font-size: 13.5px; line-height: 1.4; color: #c9cacd; }
+    .pain b { color: var(--ink); font-weight: 600; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .meta span { padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; color: var(--ink); }
+    .meta .price { background: var(--a); color: var(--on, #14161a); border-color: transparent; font-weight: 600; }
+    @media (max-width: 900px) { .grid2 li:nth-child(n) { grid-column: span 3; } .grid2 li:last-child { grid-column: 1 / -1; } }
+    @media (max-width: 640px) { .round2__head { grid-template-columns: 1fr; } .grid2 li:nth-child(n) { grid-column: 1 / -1; } }
+    @media (max-width: 900px) {
+      .grid li:nth-child(n) { grid-column: span 3; }
+      .grid li:last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      header { grid-template-columns: 1fr; }
+      .grid li:nth-child(n) { grid-column: 1 / -1; }
+      .card { min-height: 230px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .card, .open b, .glow { transition: none; } .card:hover { transform: none; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Shopify<span>Prototype Lab</span></h1>
+      <p class="lede">Eleven interaction prototypes for Shopify storefronts. Each one runs on mock JSON with invented brands and royalty-free media.</p>
+    </header>
+
+    <ul class="grid" id="ideas">
+      <li>
+        <a class="card" href="idea-01/index.html" style="--a:#d9a441">
+          <span class="num">01</span>
+          <span class="swatch" aria-hidden="true"><i style="background:#1d1612"></i><i style="background:#efe4d4"></i><i style="background:#d9a441"></i></span>
+          <h2><span class="brand">Fieldnote Active</span>Hyper Card</h2>
+          <p>A UGC video chip on each collection card morphs into a player with Features, Reviews and Options panels.</p>
+          <span class="open">Open demo <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>
+          <span class="glow" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="idea-02/index.html" style="--a:#2448ff;--on:#fff">
+          <span class="num">02</span>
+          <span class="swatch" aria-hidden="true"><i style="background:#f3f3ef"></i><i style="background:#1f2226"></i><i style="background:#2448ff"></i></span>
+          <h2><span class="brand">Northline Audio</span>Compare Dock</h2>
+          <p>Tick products into a docked tray, then expand it into a spec table that marks the best value in each row.</p>
+          <span class="open">Open demo <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>
+          <span class="glow" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="idea-03/index.html" style="--a:#a88452">
+          <span class="num">03</span>
+          <span class="swatch" aria-hidden="true"><i style="background:#efe9e1"></i><i style="background:#2b2420"></i><i style="background:#a88452"></i></span>
+          <h2><span class="brand">Aureline</span>Scroll-Story Sections</h2>
+          <p>Six scroll-driven sections built as theme-ready components, with a live panel for accent, speed and motion.</p>
+          <span class="open">Open demo <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>
+          <span class="glow" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="idea-04/index.html" style="--a:#7c5cff;--on:#fff">
+          <span class="num">04</span>
+          <span class="swatch" aria-hidden="true"><i style="background:#f6f4fb"></i><i style="background:#1e1830"></i><i style="background:#5b2ee6"></i></span>
+          <h2><span class="brand">Loop Studio</span>Creator Video Pipeline</h2>
+          <p>Creators upload, merchants swipe to approve, and approved clips land on a shoppable stories wall.</p>
+          <span class="open">Open demo <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>
+          <span class="glow" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="idea-05/index.html" style="--a:#e8452c;--on:#fff">
+          <span class="num">05</span>
+          <span class="swatch" aria-hidden="true"><i style="background:#e7e3dc"></i><i style="background:#141414"></i><i style="background:#e8452c"></i></span>
+          <h2><span class="brand">Standard Issue</span>Fit Finder from Reviews</h2>
+          <p>A two-question size quiz that mines 40 reviews for a fit signal and pre-selects the size on the product page.</p>
+          <span class="open">Open demo <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>
+          <span class="glow" aria-hidden="true"></span>
+        </a>
+      </li>
+    </ul>
+
+    <section class="round2" aria-labelledby="round2Title">
+      <div class="round2__head">
+        <h2 id="round2Title">Sellable features</h2>
+        <p>Round 2: each one fixes a merchant pain point and is priced to sell as a one-time install or a monthly app.</p>
+      </div>
+      <ul class="grid2" id="ideas2">
+      <li>
+        <a class="card" href="idea-06/index.html" style="--a:#ffd60a">
+          <span class="num">06</span>
+          <span class="swatch" aria-hidden="true"><i style="background:#f3f4f1"></i><i style="background:#121212"></i><i style="background:#ffd60a"></i></span>
+          <h2><span class="brand">Halfmile</span>Reward Ladder Cart</h2>
+          <p>Cart drawer with free-shipping, free-gift and %-off tiers that unlock with celebrations, plus upsells ranked by what reaches the next tier.</p>
+          <span class="pain"><b>Pain point:</b> Carts stall just under the free-shipping line.</span>
+          <span class="meta"><span>Moves AOV</span><span class="price">$99 one-time / $19 mo</span></span>
+          <span class="open">Open demo <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>
+          <span class="glow" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="idea-07/index.html" style="--a:#2f4a35;--on:#fff">
+          <span class="num">07</span>
+          <span class="swatch" aria-hidden="true"><i style="background:#e8ebe2"></i><i style="background:#c9a274"></i><i style="background:#2f4a35"></i></span>
+          <h2><span class="brand">Ritual Supply</span>Build-a-Box Bundles</h2>
+          <p>Pick a box size, fill the slots, watch the lid close and the ribbon tie. Bigger box, bigger discount.</p>
+          <span class="pain"><b>Pain point:</b> Shoppers buy one item when they'd buy a set.</span>
+          <span class="meta"><span>Moves AOV · units/order</span><span class="price">$129 one-time / $24 mo</span></span>
+          <span class="open">Open demo <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>
+          <span class="glow" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="idea-08/index.html" style="--a:#c9962e">
+          <span class="num">08</span>
+          <span class="swatch" aria-hidden="true"><i style="background:#f4efe7"></i><i style="background:#8a4a22"></i><i style="background:#f6dd86"></i></span>
+          <h2><span class="brand">Atelier Folio</span>Personalisation Studio</h2>
+          <p>Live foil and deboss preview with fonts, placement, a loupe and a downloadable proof for the workshop.</p>
+          <span class="pain"><b>Pain point:</b> Personalisation sold blind from a text box.</span>
+          <span class="meta"><span>Moves New revenue · CVR</span><span class="price">$149 one-time / $29 mo</span></span>
+          <span class="open">Open demo <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>
+          <span class="glow" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="idea-09/index.html" style="--a:#00c2a8">
+          <span class="num">09</span>
+          <span class="swatch" aria-hidden="true"><i style="background:#0e1116"></i><i style="background:#eef1f5"></i><i style="background:#00c2a8"></i></span>
+          <h2><span class="brand">Northline Audio</span>Smart Buy Bar</h2>
+          <p>The buy button morphs into a sticky bar with section scroll-spy, colour picker and an honest “get it by Monday” countdown.</p>
+          <span class="pain"><b>Pain point:</b> Buy button scrolls away on long pages.</span>
+          <span class="meta"><span>Moves CVR</span><span class="price">$79 one-time / $9 mo</span></span>
+          <span class="open">Open demo <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>
+          <span class="glow" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="idea-10/index.html" style="--a:#c9962e">
+          <span class="num">10</span>
+          <span class="swatch" aria-hidden="true"><i style="background:#f6efe4"></i><i style="background:#3a2420"></i><i style="background:#c9962e"></i></span>
+          <h2><span class="brand">Cacao &amp; Co</span>Gift Mode</h2>
+          <p>One switch wraps the product, adds paid wrapping, a live note card, hidden prices and a delivery date, then seals it in an envelope.</p>
+          <span class="pain"><b>Pain point:</b> Gifting on Shopify is clumsy by default.</span>
+          <span class="meta"><span>Moves AOV · seasonal CVR</span><span class="price">$99 one-time / $15 mo</span></span>
+          <span class="open">Open demo <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>
+          <span class="glow" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li class="wide">
+        <a class="card" href="idea-11/index.html" style="--a:#ff6a1f">
+          <span class="num">11</span>
+          <span class="swatch" aria-hidden="true"><i style="background:#f4f3ef"></i><i style="background:#ff6a1f"></i><i style="background:#3fae5a"></i></span>
+          <h2><span class="brand">Wildpace</span>Pip, the shopping companion</h2>
+          <p>A tiny character sneaks onto the collection page, compliments products, rides along to the product page, cheers on add to cart, and pulls out a discount billboard when the shopper looks like leaving. Then it gets very sad.</p>
+          <span class="pain"><b>Pain point:</b> Browsers leave silently; generic exit popups get ignored.</span>
+          <span class="meta"><span>Moves CVR · engagement</span><span class="price">$29–49 mo + custom character</span></span>
+          <span class="open">Open demo <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>
+          <span class="glow" aria-hidden="true"></span>
+        </a>
+      </li>
+      </ul>
+    </section>
+
+    <footer>
+      <span>Run locally with <code>npx serve .</code> or open any <code>index.html</code> directly.</span>
+      <span>Invented brands. Media from Pexels.</span>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    // Staggered entrance; CSS handles the hover lift.
+    const ready = () => document.body.classList.add("is-ready");
+    if (window.gsap && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.from("h1, .lede", { y: 24, opacity: 0, duration: 0.8, ease: "power3.out", stagger: 0.08 });
+      gsap.from("#ideas .card", {
+        y: 48, opacity: 0, rotation: 1.5, duration: 0.9, ease: "power3.out", stagger: 0.09, delay: 0.15,
+        clearProps: "transform,opacity", onComplete: ready,
+      });
+      // Round-2 cards reveal as they scroll into view.
+      const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        gsap.from("#ideas2 .card", { y: 40, opacity: 0, duration: 0.8, ease: "power3.out", stagger: 0.08, clearProps: "transform,opacity" });
+      }), { threshold: 0.15 });
+      io.observe(document.getElementById("ideas2"));
+    } else {
+      ready();
+    }
+  </script>
+</body>
+</html>
