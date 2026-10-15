@@ -1,0 +1,7 @@
+# Private: production code, client themes and their docs stay on this machine
+shopify/
+shopify-theme/
+shopify-prototypes-prompt.md
+
+# Dependencies
+node_modules/

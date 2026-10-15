@@ -1,106 +1,103 @@
-# Idea 01 · Hyper Card (Fieldnote Active)
+# Idea 01 · Loupe (Fieldnote Active)
 
-A collection page where every product card carries a small UGC video chip. The chip expands into a full player, and the player hands off to Features, Reviews and Options panels without leaving the grid.
+A collection page where product cards carry a creator clip. The chip on the card grows into a player, and three tabs unfold beside it: Details, Reviews and Shop.
 
-Fieldnote Active is an invented brand. Photos and clips come from Pexels (free licence), colour-graded to fit the art direction.
+This is the premium light redesign. The original dark version is kept in `../idea-01-v1/` for comparison.
 
-## What the demo shows
+Fieldnote Active is an invented brand. Clips and photos come from Pexels (free licence).
 
-**Collection grid**
-- Eight products from `data/products.json`: 4:5 image, name, price, stars, colour swatches.
-- Each image has a video chip (a muted 9:16 loop plus a badge pill: New, Summer Collection, Bestseller).
-- Card swatches crossfade the card image.
-- The sort pill reorders the grid with a GSAP Flip animation.
+## This demo runs the production code
 
-**Chip hover (desktop)**
-- The chip springs to about 1.1×, the clip starts playing, and the pill expands to show "Watch".
-- The thumbnail tilts up to 4° toward the cursor and the card image zooms 1.02×.
-- Keyboard focus gets the same treatment.
+The demo owns only the page itself: header, intro, grid, cards, sort and bag. Everything that opens from a chip is the Loupe runtime in `loupe/`, a minified build of the production code, which lives in a private repo.
 
-**Chip click**
-- GSAP Flip morphs the chip into a centred 9:16 player (`min(80vh, 720px)` tall, 1.5px amber border with glow) in 550ms, `power3.inOut`.
-- The backdrop dims to 70% with a 6px blur, and the grid scales to 0.985.
-- The video carries on from the chip's playhead. It plays muted, with an unmute button.
+`data/products.json` uses the same JSON shape the Shopify Liquid snippet emits, so the demo and a real store run identical code.
 
-**Tab rail**
-- Features, Reviews and Options slide out from behind the player's right edge, staggered 60ms with a slight overshoot.
+## What it shows
 
-**Features**
-- The player Flip-shrinks into a mini 9:16 thumbnail at the panel's top-right and keeps playing. Click it to return to the full video.
-- The panel reveals with a clip-path wipe. Numbered badges pop from 0.6 to 1 and marker highlights sweep behind the key phrases.
-- A tilted secondary image floats in and follows the mouse with light parallax.
+**Design.** The concept is that every clip is a field note from someone who trained in the piece, and the card opens like a notebook spread.
 
-**Reviews**
-- Quotes rise in word groups, the highlight sweeps behind the key phrase, and "helpful" counts count up from 0.
+- **Colour:** a cool chalk-white page, graphite-blue ink, one field-green accent.
+- **Type:** Archivo throughout, expanded for display and normal width for UI.
+- **One load moment:** the collection title stretches out to full width, then the cards settle in.
 
-**Options**
-- **Colour and image:** the product image crossfades when the colour changes, the colour label crossfades, and a selection ring glides between choices.
-- **Sizes:** sold-out sizes get a drawn strikethrough.
-- **Add to cart:** a small state machine runs idle → spinner → drawn checkmark → idle. The header cart counter bumps; the cart is lifted above the backdrop so you can see it.
-- **Wishlist:** the heart toggles with an elastic fill and a particle burst.
+**Card chip.**
 
-**Tab switching**
-- The active-tab indicator slides between tabs. Content crossfades and slides in the direction of tab order.
+- At rest, the chip shows the card's label (New, Bestseller, Summer Collection).
+- On hover or keyboard focus:
+  - the thumbnail lifts with a spring and starts playing
+  - the label rolls over to "Watch 0:16"
+  - the thumbnail tilts toward the cursor
+- On phones, clips preview muted while on screen.
+- The first chip pulses once to show it can be opened.
 
-**Close**
-- Esc, a backdrop click or the close button. The player Flip-fits back into the chip and focus returns to it.
+**Open.**
 
-**Mobile (<768px)**
-- The dialog becomes a near full-height bottom sheet with a drag handle. Swipe down on the handle or the video to dismiss.
-- Tabs become a bottom segmented bar.
-- On touch devices there is no hover, so chip clips autoplay inline while on screen and a tap opens the player.
+- The chip's own video element flies into the player and keeps playing.
+- The page recedes behind a frosted light veil.
+- The title, price and tabs settle in under the player.
 
-**Accessibility**
-- Dialog with `aria-modal`, a focus trap, and inert page content behind it.
-- Roving-tabindex tabs: arrow keys, Home and End.
-- Native radio inputs for colour and size, a polite live region for cart and wishlist changes, and visible focus rings.
+**Unfold.** Choosing a tab slides the player left and unfolds the details card from behind it. The title and tabs glide into the card header.
 
-**Reduced motion**
-- `prefers-reduced-motion` replaces Flip, slides, springs and sweeps with short opacity fades.
-- Off-screen chip videos pause through IntersectionObserver.
+**Details.**
+
+- Features are chapters of the clip: each has a timestamp that seeks the video, and the active chapter's bar fills as it plays.
+- The progress bar on the video is split into the same chapters.
+- Key phrases get a hand-drawn underline.
+- "Also in" tiles jump to Shop with that colour picked.
+
+**Reviews.**
+
+- The score counts up and the stars fill.
+- Quotes rise in word pairs, the key phrase is underlined, and "helpful" counts count up.
+
+**Shop.**
+
+- The image crossfades with the colour.
+- The selection ring glides between swatches and sizes.
+- Sold-out combinations follow the chosen colour (Ink has no S on the first product).
+- A size must be picked before adding.
+- Add to bag runs idle → progress line → drawn check, then the bag bumps and a toast appears.
+- The card swatches and the Shop colour stay in step.
+- The wishlist heart bursts.
+
+**Phones.**
+
+- The stage is a bottom sheet.
+- Picking a tab shrinks the video into a mini player beside the title; tap it to go back.
+- Swipe the sheet down to close it.
+
+**Accessibility.**
+
+- Dialog with an inert page behind it, a focus trap, and focus returned to the chip.
+- Arrow keys, Home and End on the tabs.
+- Native radios, a polite live region, and a pause button on the video.
+- Reduced motion swaps every movement for short fades and stops previews.
 
 ## How to run
 
-From the repo root or this folder:
+From the repo root:
 
 ```bash
 npx serve .
 # open http://localhost:3000/idea-01/
 ```
 
-Opening `index.html` straight from disk also works. Browsers block `fetch()` on `file://`, so the page falls back to `data/products.js`, a generated mirror of the JSON. After editing `data/products.json`, regenerate the mirror:
+Opening `index.html` from disk also works: browsers block `fetch()` on `file://`, so the page falls back to `data/products.js`. After editing `data/products.json`, run `node tools/sync-data.mjs` from the repo root.
 
-```bash
-node tools/sync-data.mjs   # from the repo root
-```
-
-Libraries come from a CDN (GSAP 3.12.5 core + Flip), so the first load needs a network connection.
+The only network dependency is Google Fonts (Archivo).
 
 ## File map
 
 | File | Role |
 | --- | --- |
-| `index.html` | Page shell: header, grid container, dialog skeleton |
-| `styles.css` | Tokens, grid, chip, stage, panels, mobile sheet |
-| `app.js` | Rendering from data, hover, Flip transitions, tabs, options state, focus trap, sheet drag |
-| `data/products.json` | Mock catalogue: products, colours, sizes, video, features, reviews |
-| `data/products.js` | Generated `file://` mirror of the JSON (do not edit) |
-| `assets/img/` | Graded 4:5 product photos (one per colourway) |
-| `assets/video/` | 540×960 UGC clips + poster frames |
+| `index.html` | Page shell and `window.LoupeConfig` for the demo (fake cart, notes, wishlist on) |
+| `styles.css` | Page styles and the Loupe theme variables |
+| `app.js` | Renders the grid from data, card swatches, sort, bag counter, toast, entrance |
+| `loupe/` | Minified Loupe runtime (generated, do not edit) |
+| `data/products.json` | Catalogue in the Loupe data contract (prices in cents, variants, chapters) |
+| `data/products.js` | Generated `file://` mirror of the JSON |
+| `assets/` | Product photos and UGC clips |
 
-## Shopify mapping (later, not implemented)
+## In Shopify
 
-| Prototype piece | Shopify home |
-| --- | --- |
-| Card markup (`cardMarkup` in `app.js`) | `snippets/card-product.liquid` override, or a Hyper Card snippet rendered by the theme app extension |
-| Video chip + expanded player + tabs | Theme app extension **app block** (`blocks/hyper-card.liquid`) with JS/CSS assets. The merchant adds it to the collection grid. |
-| Global stage/dialog + scripts | Theme app extension **app embed** so the dialog markup and scripts load once per page |
-| Collection header, sort pill, count | Section `main-collection-product-grid` (Dawn already has sort and count) |
-| `product.video` (UGC clip, creator) | Product metafield `fieldnote.ugc_video` (file reference) and `fieldnote.ugc_creator` (single-line text), or a metaobject list for several clips |
-| `badge` | Product metafield `fieldnote.badge_label`, or derived from tags/collections |
-| `features[]` (title, body, highlight) | Metaobject `product_feature` + product metafield list reference |
-| `reviews[]` | Reviews app API, or product metafields `reviews.rating` / `reviews.rating_count` plus a curated `fieldnote.featured_reviews` metaobject list |
-| `colors[]`, `sizes[]`, availability | Native variant options + `variant.available`. Colour hex from a swatch metafield or Shopify's native swatches. |
-| Add to cart state machine | Ajax Cart API `POST /cart/add.js`, then the `cart-icon-bubble` section rerenders |
-| Wishlist | App-owned customer metafield or a wishlist app API |
-| Shop copy (`collection`, `intro`) | `collection.title` / `collection.description` |
+Loupe ships as a Shopify app (an app embed plus a product-card block) and as a theme integration. Both live in a private repo.

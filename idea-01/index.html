@@ -4,103 +4,86 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>The Field Edit · Fieldnote Active</title>
-  <meta name="description" content="Prototype: collection grid with expanding UGC video cards.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d1612'/%3E%3Cpath d='M9 25V8h13M9 16h9' fill='none' stroke='%23efe4d4' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='23' r='3' fill='%23d9a441'/%3E%3C/svg%3E">
+  <meta name="description" content="Prototype: product cards with shoppable creator clips (Loupe).">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23172229'/%3E%3Crect x='11' y='7' width='10' height='18' rx='3' fill='none' stroke='%23F6F7F4' stroke-width='2'/%3E%3Ccircle cx='16' cy='21' r='1.6' fill='%2361C08A'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+  <link rel="stylesheet" href="loupe/loupe.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip" href="#grid">Skip to products</a>
 
-  <!-- Header sits outside .page so the cart can rise above the dialog backdrop -->
-  <header class="topbar">
-    <a class="wordmark" href="#" aria-label="Fieldnote Active home">
-      <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M5 23V5h13M5 14h9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="21.5" cy="20.5" r="3" fill="var(--accent)"/></svg>
-      <span>Fieldnote <em>Active</em></span>
+  <header class="bar">
+    <a class="logo" href="#" aria-label="Fieldnote Active home">
+      <span class="logo__word">Fieldnote</span><span class="logo__sub">Active</span>
     </a>
-    <nav class="topnav" aria-label="Main">
+    <nav class="nav" aria-label="Main">
       <a href="#" aria-current="page">Train</a>
       <a href="#">Run</a>
       <a href="#">Rest</a>
     </nav>
-    <button class="cart" id="cartBtn" type="button" aria-label="Cart, 0 items">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z M9 8V6.5a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-      <span class="cart__count" id="cartCount" aria-hidden="true">0</span>
-    </button>
+    <div class="bar__tools">
+      <button class="icon-btn" type="button" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <button class="bag" id="bag" type="button" aria-label="Bag, 0 items">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l-1 11.5h-11l-1-11.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span class="bag__count" id="bagCount" aria-hidden="true">0</span>
+      </button>
+    </div>
   </header>
 
   <main class="page" id="page">
     <section class="intro" aria-labelledby="collectionTitle">
-      <div class="intro__copy">
-        <h1 id="collectionTitle" class="intro__title"></h1>
-        <p class="intro__lede" id="collectionIntro"></p>
-      </div>
-      <div class="intro__tools">
-        <p class="intro__count" id="productCount"></p>
-        <label class="sort">
-          <span class="visually-hidden">Sort products</span>
-          <select id="sortSelect">
-            <option value="featured">Sort: Featured</option>
-            <option value="price-asc">Price, low to high</option>
-            <option value="price-desc">Price, high to low</option>
-            <option value="rating">Top rated</option>
-          </select>
-          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </label>
+      <h1 class="intro__title" id="collectionTitle"></h1>
+      <div class="intro__row">
+        <p class="intro__text" id="collectionIntro"></p>
+        <div class="intro__tools">
+          <p class="intro__count" id="productCount"></p>
+          <label class="sort">
+            <span class="sort__label">Sort</span>
+            <select id="sortSelect">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price, low to high</option>
+              <option value="price-desc">Price, high to low</option>
+              <option value="rating">Top rated</option>
+            </select>
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </label>
+        </div>
       </div>
     </section>
 
     <ul class="grid" id="grid" aria-label="Products"></ul>
 
     <footer class="foot">
-      <p>Fieldnote Active is an invented brand for a prototype. Clips and photos from Pexels.</p>
+      <p>Fieldnote Active is an invented brand. Clips and photos from Pexels.</p>
+      <p>Product cards powered by Loupe, running on mock data.</p>
     </footer>
   </main>
 
-  <!-- Expanded card: player, tab rail and panel -->
-  <div class="stage" id="stage" role="dialog" aria-modal="true" aria-labelledby="stageTitle" hidden>
-    <div class="stage__backdrop" data-close></div>
-    <div class="stack" id="stack">
-      <div class="sheet-bg" aria-hidden="true"><span class="sheet-handle"></span></div>
-      <h2 class="visually-hidden" id="stageTitle"></h2>
+  <div class="toast-region" id="toasts" aria-live="polite"></div>
 
-      <div class="panel" id="panel" role="tabpanel" aria-labelledby="" tabindex="-1">
-        <div class="panel__scroll" id="panelScroll"></div>
-      </div>
-
-      <div class="player" id="player" data-flip-id="ugc">
-        <video id="playerVideo" muted loop playsinline preload="metadata"></video>
-        <button class="player__expand" id="playerExpand" type="button" aria-label="Show video full size" tabindex="-1"></button>
-        <div class="player__meta">
-          <span class="player__creator" id="playerCreator"></span>
-        </div>
-        <button class="icon-btn player__sound" id="soundBtn" type="button" aria-pressed="false" aria-label="Unmute video">
-          <svg class="i-muted" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="m16 9.5 5 5m0-5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-          <svg class="i-sound" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-        </button>
-        <div class="player__progress" aria-hidden="true"><span id="playerProgress"></span></div>
-      </div>
-
-      <div class="tabs" id="tabs" role="tablist" aria-label="Product details" aria-orientation="vertical">
-        <span class="tabs__indicator" id="tabIndicator" aria-hidden="true"></span>
-        <button class="tab" role="tab" id="tab-features" data-tab="features" aria-selected="false" aria-controls="panel" tabindex="0"><span>Features</span></button>
-        <button class="tab" role="tab" id="tab-reviews" data-tab="reviews" aria-selected="false" aria-controls="panel" tabindex="-1"><span>Reviews</span></button>
-        <button class="tab" role="tab" id="tab-options" data-tab="options" aria-selected="false" aria-controls="panel" tabindex="-1"><span>Options</span></button>
-      </div>
-
-      <button class="icon-btn stage__close" id="closeBtn" type="button" aria-label="Close" data-close>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      </button>
-    </div>
-  </div>
-
-  <p class="visually-hidden" id="liveRegion" aria-live="polite"></p>
-
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
-  <script src="data/products.js"></script>
-  <script src="app.js"></script>
+  <script>
+    // Read by loupe.js. In Shopify these come from the app embed or the theme settings.
+    window.LoupeConfig = {
+      recede: "#page",
+      keepActive: ".toast-region",
+      invite: true,
+      wishlist: true,
+      highlight: "underline",
+      moneyFormat: "${{amount_no_decimals}}",
+      notes: ["Free returns within 30 days", "Ships in 2 to 4 working days"],
+      cart: {
+        // Stand-in for Shopify's cart; app.js updates the bag when "loupe:added" fires.
+        add: () => new Promise((resolve) => setTimeout(resolve, 700)),
+      },
+    };
+  </script>
+  <script src="loupe/loupe.js" defer></script>
+  <script src="data/products.js" defer></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

@@ -11,7 +11,7 @@ Opening `index.html` (or any `idea-0X/index.html`) straight from disk also works
 
 | Folder | Demo | Brand |
 | --- | --- | --- |
-| `idea-01/` | Hyper Card: a UGC video chip expands into a player with Features / Reviews / Options | Fieldnote Active |
+| `idea-01/` | Loupe: a creator clip on each card grows into a player with Details / Reviews / Shop (original dark version: `idea-01-v1/`) | Fieldnote Active |
 | `idea-02/` | Compare Dock: a tick-to-compare tray expands into a best-value spec table | Northline Audio |
 | `idea-03/` | Scroll-Story Sections: six ScrollTrigger sections plus a live Tweak panel | Aureline |
 | `idea-04/` | Creator Video Pipeline: upload → swipe approval → shoppable stories wall | Loop Studio |
